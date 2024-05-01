@@ -1,0 +1,16 @@
+.containerIntro {
+    max-width: 100%;
+    height: 100vh;
+    background-color: lightskyblue;
+    margin: 0;
+}
+
+.filaLogoLogin {
+    background: aquamarine;
+    height: 15vh
+}
+
+.filaBienvenida {
+    background: lightgoldenrodyellow;
+    height: 45vh;
+}
