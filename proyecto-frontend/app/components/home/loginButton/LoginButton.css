@@ -1,0 +1,12 @@
+.loginButton {
+    margin-top: 5px;
+    background-color: #25a09c;
+}
+
+.loginButton:hover {
+    background-color: #18615e;
+}
+
+.loginButton:first-child:active {
+    background-color: #25a09c;
+}
