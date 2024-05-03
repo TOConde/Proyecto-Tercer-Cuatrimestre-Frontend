@@ -1,7 +1,7 @@
-import "./webLogo.css";
+import './webLogo.css';
 
 export const WebLogo = () => {
     return(
-        <img src="/img/webLogo/flixoramaLogo.jpeg" className="webLogo"></img>
+        <img src="/img/webLogo/Designer1.png" className="webLogo"></img>
     );
 }
