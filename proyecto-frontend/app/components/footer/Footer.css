@@ -1,0 +1,21 @@
+footer{
+  width: 100%;
+  background-color: purple;
+}
+
+.conteinerSocials {
+  display: flex;
+}
+
+.socialImg {
+  width: 50px;
+}
+
+.githubImg {
+  width: 100px;
+}
+
+.containerGithub {
+  display: flex;
+  justify-content: center;
+}
