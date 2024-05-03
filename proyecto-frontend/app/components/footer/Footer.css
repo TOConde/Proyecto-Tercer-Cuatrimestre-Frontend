@@ -3,12 +3,26 @@ footer{
   background-color: purple;
 }
 
+.buttonFooter {
+  background-color: transparent;
+  color: white;
+}
+
+.buttonFooter:hover {
+  background-color: rgb(99, 1, 99)
+}
+/* dependiendo del color de fondo que al hacer hover es oscurezca un poco */
 .conteinerSocials {
   display: flex;
+  justify-content: center;
 }
 
 .socialImg {
-  width: 50px;
+  width: 65px;
+}
+
+.socialImg:hover {
+  cursor: pointer;
 }
 
 .githubImg {
@@ -16,6 +30,11 @@ footer{
 }
 
 .containerGithub {
+  display: flex;
+  justify-content: center;
+}
+
+.containerButton {
   display: flex;
   justify-content: center;
 }
