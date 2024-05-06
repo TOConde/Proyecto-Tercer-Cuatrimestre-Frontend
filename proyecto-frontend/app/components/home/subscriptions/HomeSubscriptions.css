@@ -1,0 +1,16 @@
+.containerSubs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: 50vh;
+    background-color: black;
+    border-bottom: solid;
+    border-color: #343a40;
+    border-width: 5px;
+}
+
+.containerCard {
+    display: flex;
+    justify-content: center;
+}
