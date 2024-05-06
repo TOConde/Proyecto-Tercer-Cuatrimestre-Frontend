@@ -9,6 +9,9 @@
     box-shadow: 
         rgba(0, 0, 0, 0.80) 20px 20px 20px 20px inset,
         rgba(0, 0, 0, 0.80) -20px -20px 20px 20px inset;
+    border-bottom: solid;
+    border-color: #343a40;
+    border-width: 5px;
 }
 
 .filaLogoLogin {
