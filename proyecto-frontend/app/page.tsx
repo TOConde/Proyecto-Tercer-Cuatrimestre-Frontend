@@ -1,3 +1,4 @@
+'use client'
 import styles from './page.module.css';
 import { HomeIntro } from "./components/home/homeIntro/HomeIntro";
 import { HomeAbout } from './components/home/homeAbout/HomeAbout';
