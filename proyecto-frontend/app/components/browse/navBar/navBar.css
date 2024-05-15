@@ -1,0 +1,8 @@
+.navBar {
+  width: 100%;
+  background-color: black;
+  border-bottom: solid;
+  border-color: #343a40;
+  border-width: 5px;
+  justify-content: space-between;
+}
