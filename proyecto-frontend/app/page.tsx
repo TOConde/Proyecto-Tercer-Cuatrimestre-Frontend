@@ -12,8 +12,7 @@ export default function Home() {
         <HomeIntro />
         <HomeAbout />
         <HomeSuscriptions />
-        <Faq />
-        <Footer />
+        <Faq />        
     </main>
   );
 }

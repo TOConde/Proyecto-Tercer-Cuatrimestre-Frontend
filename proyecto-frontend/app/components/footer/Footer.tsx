@@ -17,7 +17,9 @@ export const Footer = () => {
             <img className='socialImg' src="./img/footer/logosRedSocial/xtwitter.png" alt="twitter" />
         </div>
         <div className='containerGithub'>
-          <img className='githubImg' src="./img/footer/github.png" alt="github" />
+          <a href="https://github.com/TOConde/Proyecto-Tercer-Cuatrimestre-Frontend" target="_blank">
+            <img className='githubImg' src="./img/footer/github.png" alt="github" />
+          </a>          
         </div>
       </footer>
   );

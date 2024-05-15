@@ -1,6 +1,7 @@
 footer{
   width: 100%;
-  background-color: purple;
+  background-color: #303000;
+  padding: 20px 0;
 }
 
 .buttonFooter {
@@ -32,6 +33,7 @@ footer{
 .containerGithub {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 .containerButton {
