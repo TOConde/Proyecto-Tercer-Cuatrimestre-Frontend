@@ -3,7 +3,7 @@ import './Noticias.css'
 export const NavBarNoticias = () => {
   return (
     <div className=''>
-      <p>Noticias</p>
+      <p className='textNoticias'>Noticias</p>
     </div>
   );
 }
