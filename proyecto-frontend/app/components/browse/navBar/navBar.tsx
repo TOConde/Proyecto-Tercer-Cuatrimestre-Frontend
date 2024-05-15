@@ -5,10 +5,9 @@ import { NavBarNoticias } from './componenteNavBar/Noticias';
 import { NavBarLupa } from './componenteNavBar/Lupa';
 import { NavBarUser } from './componenteNavBar/User';
 
-//este navbar abría que hacerlo sticky
 export const NavBarBrowse = () => {
   return (
-    <div className='containerNav d-flex'>
+    <nav className='navBar d-flex fixed-top'>
       <div className='d-flex align-items-center'>
         <NavBarLogo />
         <NavBarExplorar />
@@ -18,6 +17,6 @@ export const NavBarBrowse = () => {
         <NavBarLupa />
         <NavBarUser />
       </div>
-    </div>
+    </nav>
   );
 }
