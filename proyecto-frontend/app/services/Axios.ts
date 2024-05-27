@@ -1,10 +1,21 @@
 /* eslint-disable prefer-promise-reject-errors */
 import axios from 'axios';
 
-const clienteAxios = axios.create({
-  baseURL: 'http://localhost:8080',
-});
+const createClient = () => {
+  const token = localStorage.getItem("accessToken");
+  const cliente = axios.create({
+    baseURL: 'http://localhost:8080',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  });
+  return cliente;
+}
 
+const clienteAxios = createClient();
+
+export default clienteAxios;
+/* 
 clienteAxios.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -31,5 +42,4 @@ clienteAxios.interceptors.response.use(
     return null;
   }
 );
-
-export default clienteAxios;
+*/

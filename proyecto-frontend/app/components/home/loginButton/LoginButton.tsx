@@ -2,7 +2,7 @@ import './LoginButton.css'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { loginUser } from '@/app/services/Login';
+import { getInformacionUsuario, loginUser } from '@/app/services/Login';
 import { useRouter } from 'next/navigation';
 
 
@@ -30,7 +30,16 @@ function LoginButton() {
       email,
       password
     }
-    await loginUser(user, router);
+
+    const loginExitoso = await loginUser(user)
+    if (loginExitoso) {
+      const userData = await getInformacionUsuario();
+      if (userData?.role === "ADM") {
+        router.push("./admin");
+      } else {
+        router.push("./browse");
+      }
+    }
   };
 
   return (
