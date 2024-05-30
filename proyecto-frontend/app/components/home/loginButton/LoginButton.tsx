@@ -44,15 +44,15 @@ function LoginButton() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className='btn buttonsLogReg' onClick={handleShow}>
         Login
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className='containerFormLogin'>
           <Modal.Title>Iniciar sesion en Flixorama</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className='containerFormLogin'>
         <form role="form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="usrname"><span className="glyphicon glyphicon-user"></span>Email</label>
@@ -62,7 +62,7 @@ function LoginButton() {
               <label htmlFor="psw"><span className="glyphicon glyphicon-eye-open"></span>Password</label>
               <input type="text" className="form-control" id="psw" placeholder="Enter password" value={password} onChange={handleChangePassword}/>
             </div>
-              <button type="submit" className="btn btn-success btn-block"><span className="glyphicon glyphicon-off"></span>Login</button>
+              <button type="submit" className="btn btnLoginForm btn-success btn-block"><span className="glyphicon glyphicon-off"></span>Login</button>
           </form>
         </Modal.Body>
       </Modal>
