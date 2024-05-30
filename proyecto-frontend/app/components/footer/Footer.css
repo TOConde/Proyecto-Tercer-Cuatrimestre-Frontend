@@ -1,24 +1,26 @@
-footer{
+footer {
   width: 100%;
-  background-color: #303000;
   padding: 20px 0;
+  background: linear-gradient(to top, black, #d9d946);
 }
 
 .buttonFooter {
   background-color: transparent;
-  color: white;
+  color: black;
 }
 
 .buttonFooter:hover {
-  background-color: rgb(99, 1, 99)
+  background-color: #9f9f31;
+  color: white;
 }
-/* dependiendo del color de fondo que al hacer hover es oscurezca un poco */
+
 .conteinerSocials {
   display: flex;
   justify-content: center;
 }
 
 .socialImg {
+  margin: 10px;
   width: 65px;
 }
 

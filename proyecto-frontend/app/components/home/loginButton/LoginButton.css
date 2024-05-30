@@ -1,12 +1,45 @@
-.loginButton {
-    margin-top: 5px;
-    background-color: #25a09c;
+.buttonsLogReg {
+    background-color: black;
+    padding: 10px 25px;
+    color: #d9d946;
+    border: solid black;
+    transition: background-color 0.5s ease, color 0.3s ease;
+    transition: color 0.5s ease, color 0.3s ease;
+    transition: border 0.5s ease, color 0.3s ease;
 }
 
-.loginButton:hover {
-    background-color: #18615e;
+.buttonsLogReg:hover {
+    background-color: black;
+    border: solid #d9d946;
+    color: white;
 }
 
-.loginButton:first-child:active {
-    background-color: #25a09c;
+.buttonsLogReg:first-child:active {
+    border: solid blue;
+    color: white;
+    background: rgb(36, 36, 36);
+}
+
+.containerFormLogin {
+    background-color: black;
+    color: #d9d946;
+    border: solid 1px #d9d946;
+}
+
+.btnLoginForm {
+    margin-top: 10px;
+
+    background-color: black;
+    color: #d9d946;
+    border: solid 1px #d9d946;
+    transition: background-color 0.5s ease, color 0.3s ease;
+    transition: color 0.5s ease, color 0.3s ease;
+    transition: border 0.5s ease, color 0.3s ease;
+}
+
+.btnLoginForm:hover {
+    background-color: black;
+    border: solid 1px white;
+    color: white;
+    font-weight: bold;
 }
