@@ -9,7 +9,7 @@ function hasRequiredPermissions(requiredPermissions: string[], userPermissions: 
   );
 }
 
-export function withRoles(Component: any, requiredPermissions: string[],goBackRoute: string) {
+export function withRoles(Component: any, requiredPermissions: string[], goBackRoute: string) {
   return function WithRolesWrapper(props: any) {
     const router = useRouter();
 

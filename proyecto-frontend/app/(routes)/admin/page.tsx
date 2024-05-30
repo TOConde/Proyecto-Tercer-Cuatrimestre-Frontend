@@ -11,4 +11,4 @@ const Page = () => {
     )
 }
 
-export default withRoles(Page,['ADM'], '/')
+export default withRoles(Page, ['ADM'], '/')
