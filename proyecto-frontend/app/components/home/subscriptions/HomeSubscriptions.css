@@ -1,4 +1,4 @@
-.containerSubs {
+.containerSubscription {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,16 +8,8 @@
     border-bottom: solid 5px #343a40;
 }
 
-.containerCard {
-    display: flex;
-    justify-content: center;
-}
-
-.cardBorder {
+.cardContainer {
     border: solid 1px #d9d946;
-}
-
-.cardSubs{
     background-color: black;
     color: #d9d946;
 }
