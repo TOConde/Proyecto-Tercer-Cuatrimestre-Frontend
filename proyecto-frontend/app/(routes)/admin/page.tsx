@@ -1,12 +1,13 @@
 'use client'
 
 import { withRoles } from '@/app/components/HOC/WithRoles'
+import { FormAdmin } from '@/app/components/admin/form/FormAdmin'
 
 const Page = () => {
     return (
         <div>
             <div>Bienvenido a la Administraciao</div>
-            <div>Aca va un lindo form para cargar pelis</div>
+            <FormAdmin />
         </div>
     )
 }
