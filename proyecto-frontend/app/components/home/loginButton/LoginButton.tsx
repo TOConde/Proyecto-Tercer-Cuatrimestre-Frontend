@@ -44,7 +44,7 @@ function LoginButton() {
 
   return (
     <>
-      <Button variant="primary" className='btn buttonsLogReg' onClick={handleShow}>
+      <Button variant="primary" className='btn buttonLogin' onClick={handleShow}>
         Login
       </Button>
 
