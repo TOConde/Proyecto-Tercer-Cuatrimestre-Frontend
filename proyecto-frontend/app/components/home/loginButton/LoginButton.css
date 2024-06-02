@@ -1,4 +1,4 @@
-.buttonsLogReg {
+.buttonLogin {
     background-color: black;
     padding: 10px 25px;
     color: #d9d946;
@@ -8,13 +8,13 @@
     transition: border 0.5s ease, color 0.3s ease;
 }
 
-.buttonsLogReg:hover {
+.buttonLogin:hover {
     background-color: black;
     border: solid #d9d946;
     color: white;
 }
 
-.buttonsLogReg:first-child:active {
+.buttonLogin:first-child:active {
     border: solid blue;
     color: white;
     background: rgb(36, 36, 36);

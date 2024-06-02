@@ -1,0 +1,45 @@
+.buttonRegister {
+    background-color: black;
+    padding: 10px 25px;
+    color: #d9d946;
+    border: solid black;
+    transition: background-color 0.5s ease, color 0.3s ease;
+    transition: color 0.5s ease, color 0.3s ease;
+    transition: border 0.5s ease, color 0.3s ease;
+}
+
+.buttonRegister:hover {
+    background-color: black;
+    border: solid #d9d946;
+    color: white;
+}
+
+.buttonRegister:first-child:active {
+    border: solid blue;
+    color: white;
+    background: rgb(36, 36, 36);
+}
+
+.containerFormRegister {
+    background-color: black;
+    color: #d9d946;
+    border: solid 1px #d9d946;
+}
+
+.btnRegisterForm {
+    margin-top: 10px;
+
+    background-color: black;
+    color: #d9d946;
+    border: solid 1px #d9d946;
+    transition: background-color 0.5s ease, color 0.3s ease;
+    transition: color 0.5s ease, color 0.3s ease;
+    transition: border 0.5s ease, color 0.3s ease;
+}
+
+.btnRegisterForm:hover {
+    background-color: black;
+    border: solid 1px white;
+    color: white;
+    font-weight: bold;
+}

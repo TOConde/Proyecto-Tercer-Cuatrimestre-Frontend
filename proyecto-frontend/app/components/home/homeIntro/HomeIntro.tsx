@@ -1,6 +1,6 @@
 import './HomeIntro.css'
 import LoginButton from '../loginButton/LoginButton';
-import { RegisterButton } from '../registerButton/RegisterButton';
+import RegisterButton  from '../registerButton/RegisterButton';
 import { WebLogo } from '../../global/webLogo/WebLogo';
 
 export const HomeIntro = () => {
