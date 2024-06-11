@@ -1,0 +1,10 @@
+.containerListaRecomen {
+  width: 100%;
+  padding: 25px;
+  color: #d9d946;
+  background-color: black;
+}
+
+.imgMovie {
+  border-radius: 10px;
+}
