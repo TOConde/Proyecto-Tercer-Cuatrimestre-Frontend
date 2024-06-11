@@ -6,3 +6,32 @@
   color: white;
   margin-bottom: 0;
 }
+
+.btnExplorar {
+  background-color: black;
+  border-color: black;
+}
+
+.btnExplorar:hover {
+  background-color: rgb(20, 20, 20);
+  border-color: slategray;
+}
+
+.btnExplorar:checked + .btnExplorar, :not(.btnExplorar) + .btnExplorar:active, .btnExplorar:first-child:active, .btnExplorar.active, .btnExplorar.show {
+  background-color: rgb(20, 20, 20);
+  border-color: slategray;
+}
+
+.dropMenu{
+  background-color: black;
+  border: solid 2px #d9d946;;
+}
+
+.dropItem {
+  color: white;
+}
+
+.dropItem:hover {
+  color: white;
+  background-color: rgb(20, 20, 20);
+}
