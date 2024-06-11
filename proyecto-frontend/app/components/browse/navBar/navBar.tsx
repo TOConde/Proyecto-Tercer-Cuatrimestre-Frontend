@@ -1,6 +1,6 @@
 import './NavBar.css'
 import { NavBarLogo } from './componenteNavBar/Logo';
-import { NavBarExplorar } from './componenteNavBar/Explorar';
+import  NavBarExplorar  from './componenteNavBar/Explorar';
 import { NavBarNoticias } from './componenteNavBar/Noticias';
 import { NavBarLupa } from './componenteNavBar/Lupa';
 import { NavBarUser } from './componenteNavBar/User';
