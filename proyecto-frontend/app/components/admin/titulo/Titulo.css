@@ -1,0 +1,24 @@
+.tituloContainer {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0 25px 0;
+  background-color: black;
+  position: relative;
+  width: 100%;
+}
+
+.tituloContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tituloAdmin {
+  color: #d9d946;
+  margin: 0;
+}
+
+.containerLogOutBttn {
+  position: absolute;
+  right: 25px;
+}
