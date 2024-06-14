@@ -6,10 +6,11 @@
     transition: background-color 0.5s ease, color 0.3s ease;
     transition: color 0.5s ease, color 0.3s ease;
     transition: border 0.5s ease, color 0.3s ease;
+    border: solid #d9d946;
 }
 
 .buttonLogin:hover {
-    background-color: black;
+    background-color: rgb(30, 30, 30);
     border: solid #d9d946;
     color: white;
 }
