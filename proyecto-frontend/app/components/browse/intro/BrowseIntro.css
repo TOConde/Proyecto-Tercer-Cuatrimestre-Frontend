@@ -7,9 +7,39 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/img/homeBackground/homeBackground.jpg);
   filter: blur(0.5px);
   box-shadow:
-      rgba(0, 0, 0, 0.80) 20px 20px 20px 20px inset,
-      rgba(0, 0, 0, 0.80) -20px -20px 20px 20px inset;
+    rgba(0, 0, 0, 0.80) 20px 20px 20px 20px inset,
+    rgba(0, 0, 0, 0.80) -20px -20px 20px 20px inset;
   border-bottom: solid;
   border-color: #343a40;
   border-width: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.containerBrowsePeliculaIntro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.containerBrowseIntroSinopsis {
+  color: #d9d946;
+  background-color: black;
+  border: 1px solid #d9d946;
+
+  width: 300px;
+  padding: 10px;
+
+  position: absolute;
+  left: 100px;
+}
+
+.containerBrowseIntroImg {
+  display: flex;
+
+  border: 1px solid #d9d946;
+  height: 99vh;
 }
