@@ -1,0 +1,13 @@
+.containerFormAdm {
+  background-color: black;
+}
+
+.formAdmLabel {
+  color: #d9d946;
+  padding-bottom: 10px;
+}
+
+.containerFormInput {
+  background-color: black;
+  border: solid #d9d946;
+}
