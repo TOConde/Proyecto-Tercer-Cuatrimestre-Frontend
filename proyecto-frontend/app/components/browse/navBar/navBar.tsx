@@ -4,6 +4,7 @@ import  NavBarExplorar  from './componenteNavBar/Explorar';
 import { NavBarNoticias } from './componenteNavBar/Noticias';
 import { NavBarLupa } from './componenteNavBar/Lupa';
 import { NavBarUser } from './componenteNavBar/User';
+import { LogOutButton } from '../../global/logout/LogOut';
 
 export const NavBarBrowse = () => {
   return (
@@ -15,6 +16,7 @@ export const NavBarBrowse = () => {
       </div>
       <div className='d-flex align-items-center'>
         <NavBarLupa />
+        <LogOutButton />
         <NavBarUser />
       </div>
     </nav>
