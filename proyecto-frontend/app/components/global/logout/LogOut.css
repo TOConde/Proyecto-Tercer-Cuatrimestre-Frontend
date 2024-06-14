@@ -1,0 +1,26 @@
+.logOutBttnContainer {
+  padding-right: 20px;
+}
+
+.logOutBttn {
+  background-color: black;
+  padding: 10px 25px;
+  color: #d9d946;
+  border: solid black;
+  transition: background-color 0.5s ease, color 0.3s ease;
+  transition: color 0.5s ease, color 0.3s ease;
+  transition: border 0.5s ease, color 0.3s ease;
+  border: solid #d9d946;
+}
+
+.logOutBttn:hover {
+  background-color: rgb(30, 30, 30);
+  border: solid #d9d946;
+  color: white;
+}
+
+.logOutBttn:first-child:active {
+  border: solid blue;
+  color: white;
+  background: rgb(36, 36, 36);
+}
