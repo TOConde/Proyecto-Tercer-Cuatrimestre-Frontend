@@ -8,6 +8,57 @@
 }
 
 .containerFormInput {
+  color: #d9d946;
   background-color: black;
   border: solid #d9d946;
+}
+
+.containerFormInput:focus {
+  color: #d9d946;
+  background-color: black;
+  border: solid #d9d946;
+  box-shadow: none;
+}
+
+.form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-control-plaintext ~ label, .form-floating > .form-select ~ label {
+  color: black;
+  font-weight: 900;
+}
+
+.bttnAgregar {
+  background-color: black;
+  padding: 10px 25px;
+  margin-bottom: 15px;
+  color: #d9d946;
+  border: solid black;
+  transition: background-color 0.5s ease, color 0.3s ease;
+  transition: color 0.5s ease, color 0.3s ease;
+  transition: border 0.5s ease, color 0.3s ease;
+  border: solid #d9d946;
+}
+
+.bttnAgregar:hover {
+  background-color: rgb(30, 30, 30);
+  border: solid #d9d946;
+  color: white;
+}
+
+.bttnAgregar:first-child:active {
+  border: solid blue;
+  color: white;
+  background: rgb(36, 36, 36);
+}
+
+.bttnAgregar-check:checked + .bttnAgregar, :not(.bttnAgregar-check) + .bttnAgregar:active, .bttnAgregar:first-child:active, .bttnAgregar.active, .bttnAgregar.show {
+  border: solid blue;
+  color: white;
+  background: rgb(36, 36, 36);
+}
+
+.bttnAgregar:focus-visible {
+  border: solid blue;
+  color: white;
+  background: rgb(36, 36, 36);
+  outline: 0;
+  box-shadow: none;
 }
