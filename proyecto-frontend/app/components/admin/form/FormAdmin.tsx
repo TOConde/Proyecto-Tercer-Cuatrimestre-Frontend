@@ -1,4 +1,4 @@
-import { FloatingLabel, Form } from 'react-bootstrap';
+import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import './FormAdmin.css'
 
 export const FormAdmin = () => {
@@ -19,6 +19,7 @@ export const FormAdmin = () => {
       <FloatingLabel controlId="etc3" label="etc3" className="formAdmLabel">
         <Form.Control type="text" placeholder="etc3" className="containerFormInput"/>
       </FloatingLabel>
+      <Button className='bttnAgregar'>Agregar</Button>
     </div>
   );
 }
