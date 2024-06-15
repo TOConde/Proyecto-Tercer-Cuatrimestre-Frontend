@@ -16,4 +16,4 @@ const Browse = () => {
   );
 }
 
-export default withRoles(Browse,['USR'], '/');
+export default withRoles(Browse,['USR', 'ADM'], '/');
