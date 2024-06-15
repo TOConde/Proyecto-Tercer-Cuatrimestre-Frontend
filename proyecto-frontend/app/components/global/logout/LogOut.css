@@ -24,3 +24,17 @@
   color: white;
   background: rgb(36, 36, 36);
 }
+
+.logOutBttn-check:checked + .logOutBttn, :not(.logOutBttn-check) + .logOutBttn:active, .logOutBttn:first-child:active, .logOutBttn.active, .logOutBttn.show {
+  border: solid blue;
+  color: white;
+  background: rgb(36, 36, 36);
+}
+
+.logOutBttn:focus-visible {
+  border: solid blue;
+  color: white;
+  background: rgb(36, 36, 36);
+  outline: 0;
+  box-shadow: none;
+}
