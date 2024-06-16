@@ -1,6 +1,6 @@
 import './HomeIntro.css'
 import LoginButton from '../loginButton/LoginButton';
-import RegisterButton  from '../registerButton/RegisterButton';
+import RegisterButton from '../registerButton/RegisterButton';
 import { WebLogo } from '../../global/webLogo/WebLogo';
 
 export const HomeIntro = () => {
@@ -8,13 +8,6 @@ export const HomeIntro = () => {
         <div className="container text-center containerIntro">
             <div className="containerTop">
                 <WebLogo />
-            </div>
-            <div className="containerTextBttn">
-                <div className='containerIntroText'>
-                    <p>Películas y series ilimitadas y mucho más</p>
-                    <p>Disfruta donde quieras. Cancela cuando quieras.</p>
-                    <p>¿Quieres ver Flixorama ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Flixorama.</p>
-                </div>
                 <div className='containerBttn'>
                     <div className='containerBttnLogin'>
                         <LoginButton />
@@ -23,6 +16,11 @@ export const HomeIntro = () => {
                         <RegisterButton />
                     </div>
                 </div>
+            </div>
+            <div className='containerHomeIntroText'>
+                <p>Películas y series ilimitadas y mucho más</p>
+                <p>Disfruta donde quieras. Cancela cuando quieras.</p>
+                <p>¿Quieres ver Flixorama ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Flixorama.</p>
             </div>
         </div>
     );
