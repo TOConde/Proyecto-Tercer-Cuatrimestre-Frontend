@@ -13,3 +13,8 @@ export async function agregarPelicula(body: FormData): Promise<boolean> {
         return false;
     }
 }
+
+export const getAllGeneros = async (): Promise<any> => {
+  const response = await clienteAxios.get('/pelicula/generos');
+  return response.data;
+}
