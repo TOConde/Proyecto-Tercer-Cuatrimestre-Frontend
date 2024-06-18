@@ -26,25 +26,27 @@ export const FormAdmin = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!img) {
-      console.log('No image selected');
+      console.log('Imagen sin seleccionar');
       return;
     }
 
     const pelicula = new FormData();
-        pelicula.append('titulo', titulo);
-        pelicula.append('sinopsis', sinopsis);
-        pelicula.append('img', img);
+    pelicula.append('titulo', titulo);
+    pelicula.append('sinopsis', sinopsis);
+    pelicula.append('img', img);
 
     const agregadoExitoso = await agregarPelicula(pelicula);
     if (agregadoExitoso) {
-      console.log('Película creada con éxito.');
+      setTitulo('');
+      setSinopsis('');
+      console.log('Película cargada con éxito.');
     } else {
-      console.log('Error al crear la película.');
+      console.log('Error al cargar la película.');
     }
   }
 
   return (
-    <form className='containerFormAdm'>
+    <form className='containerFormAdm' onSubmit={handleSubmit}>
       <FloatingLabel controlId="floatingInput" label="Titulo pelicula" className="formAdmLabel">
         <Form.Control type="text" placeholder="Titulo pelicula" className="containerFormInput" value={titulo} onChange={handleChangeTitulo} />
       </FloatingLabel>
