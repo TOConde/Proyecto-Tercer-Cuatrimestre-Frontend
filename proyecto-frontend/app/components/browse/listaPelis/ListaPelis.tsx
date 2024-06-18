@@ -1,4 +1,3 @@
-import { Button } from 'react-bootstrap';
 import './ListaPelis.css'
 import { getAllMovies } from '@/app/services/BrowsePeliculas';
 import { useEffect, useState } from 'react';
@@ -19,7 +18,7 @@ export const ListaPelis = () => {
     const fetchMovies = async () => {
       try {
         const allMovies = await getAllMovies();
-        setMovies(allMovies);
+        setMovies(randomizeArray(allMovies).slice(0 ,5));
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
@@ -27,6 +26,14 @@ export const ListaPelis = () => {
 
     fetchMovies();
   }, []);
+
+  const randomizeArray = (array: Movie[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 
   return (
       <div className="containerListaRecomen">
