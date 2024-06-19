@@ -6,7 +6,7 @@ export const TituloAdmin = () => {
   return (
     <div className='tituloContainer'>
       <div className='tituloContent'>
-        <p className='tituloAdmin text-center'>Completar el siguiente formulario para agregar una nueva Pelicula/serie</p>
+        <p className='tituloAdmin text-center'>Completar el siguiente formulario para agregar una nueva Película/Serie</p>
         <div className='containerLogOutBttn'>
           <BrowseButton />
           <LogOutButton />
