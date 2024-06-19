@@ -94,13 +94,13 @@ export const FormAdmin = () => {
 
   return (
     <form className='containerFormAdm' onSubmit={handleSubmit}>
-      <FloatingLabel controlId="floatingInput" label="Titulo pelicula" className="formAdmLabel">
-        <Form.Control type="text" placeholder="Titulo pelicula" className="containerFormInput" value={titulo} onChange={handleChangeTitulo} />
+      <FloatingLabel controlId="floatingInput" label="Título película" className="formAdmLabel">
+        <Form.Control type="text" placeholder="Título película" className="containerFormInput" value={titulo} onChange={handleChangeTitulo} />
       </FloatingLabel>
       <FloatingLabel controlId="floatingSinopsis" label="Sinopsis" className="formAdmLabel">
         <Form.Control type="text" placeholder="Sinopsis" className="containerFormInput" value={sinopsis} onChange={handleChangeSinopsis} />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingDuracion" label="Duracion" className="formAdmLabel">
+      <FloatingLabel controlId="floatingDuracion" label="Duración" className="formAdmLabel">
         <Form.Control type="text" placeholder="Duración" className="containerFormInput" value={duracion} onChange={handleChangeDuracion} />
       </FloatingLabel>
       <FloatingLabel controlId="floatingEstreno" label="Estreno" className="formAdmLabel">
