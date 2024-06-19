@@ -8,6 +8,10 @@
   margin: 0 20px;
 }
 
+.containerGenero {
+  min-height: 20vh;
+}
+
 .containerFormInput {
   color: #d9d946;
   background-color: black;
@@ -19,6 +23,10 @@
   background-color: black;
   border: solid #d9d946;
   box-shadow: none;
+}
+
+.form-floating > .form-select {
+  min-height: 20vh;
 }
 
 .form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-control-plaintext ~ label, .form-floating > .form-select ~ label {

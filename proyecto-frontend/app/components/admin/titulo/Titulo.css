@@ -19,6 +19,7 @@
 }
 
 .containerLogOutBttn {
+  display: flex;
   position: absolute;
   right: 25px;
 }

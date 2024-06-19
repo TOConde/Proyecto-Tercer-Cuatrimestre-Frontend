@@ -107,7 +107,7 @@ export const FormAdmin = () => {
         <Form.Control type="date" placeholder="Fecha de estreno" className="containerFormInput" value={estreno} onChange={handleChangeEstreno} />
       </FloatingLabel>
       <FloatingLabel controlId="floatingGeneros" label="Géneros" className="formAdmLabel">
-          <Form.Select multiple className="containerFormInput" onChange={handleSelectGenero}>
+          <Form.Select multiple className="containerFormInput containerGenero" onChange={handleSelectGenero}>
             {generos.map((genero: any) => (
               <option key={genero.generoID} value={genero.generoID}>{genero.nombreGenero}</option>
             ))}
