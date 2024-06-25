@@ -1,0 +1,11 @@
+.profileImg {
+    width: 200px;
+    height: 200px;
+    border: solid;
+    border-radius: 50%;
+    border-color: #343a40;
+    border-width: 5px;
+    position: relative;
+    margin-top: -100px;
+    margin-left: 15%;
+}
