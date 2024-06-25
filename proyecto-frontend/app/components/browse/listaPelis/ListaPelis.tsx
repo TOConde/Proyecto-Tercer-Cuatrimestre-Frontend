@@ -1,5 +1,5 @@
 import './ListaPelis.css'
-import { getAllMovies } from '@/app/services/BrowsePeliculas';
+import { getAllMovies } from '@/app/services/Peliculas';
 import { useEffect, useState } from 'react';
 
 interface Movie {
