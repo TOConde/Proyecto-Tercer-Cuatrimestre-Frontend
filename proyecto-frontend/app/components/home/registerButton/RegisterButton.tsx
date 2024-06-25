@@ -53,7 +53,7 @@ function RegisterButton() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="psw"><span className="glyphicon glyphicon-eye-open"></span>Password</label>
-                            <input type="text" className="form-control" id="psw" placeholder="Enter password" value={password} onChange={handleChangePassword} />
+                            <input type="password" className="form-control" id="psw" placeholder="Enter password" value={password} onChange={handleChangePassword} />
                         </div>
                         <button type="submit" className="btn btnRegisterForm btn-success btn-block"><span className="glyphicon glyphicon-off"></span>Register</button>
                     </form>
