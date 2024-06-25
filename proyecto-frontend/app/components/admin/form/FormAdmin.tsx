@@ -8,6 +8,7 @@ export const FormAdmin = () => {
   const [sinopsis, setSinopsis] = useState('');
   const [duracion, setDuracion] = useState('');
   const [estreno, setEstreno] = useState('');
+  const [video, setVideo] = useState('');
 
   const [generos, setGeneros] = useState([]);
   const [selectedGeneros, setSelectedGeneros] = useState<number[]>([]);
@@ -44,11 +45,8 @@ export const FormAdmin = () => {
     setEstreno(e.target.value);
   };
 
-  const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImg(e.target.files[0]);
-      setFileName(e.target.files[0].name)
-    }
+  const handleChangeVideo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVideo(e.target.value);
   };
 
   const handleSelectGenero = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -60,6 +58,13 @@ export const FormAdmin = () => {
       }
     });
     setSelectedGeneros(selected);
+  };
+
+  const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setImg(e.target.files[0]);
+      setFileName(e.target.files[0].name)
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -74,6 +79,7 @@ export const FormAdmin = () => {
     pelicula.append('sinopsis', sinopsis);
     pelicula.append('duracion', duracion);
     pelicula.append('fechaEstreno', estreno);
+    pelicula.append('urlVideo', video);
     pelicula.append('generos', JSON.stringify(selectedGeneros));
     pelicula.append('img', img);
     
@@ -84,6 +90,7 @@ export const FormAdmin = () => {
       setSinopsis('');
       setDuracion('');
       setEstreno('');
+      setVideo('');
       setSelectedGeneros([]);
       setFileName('Formato .jpg/.jpeg/.png');
       console.log('Película cargada con éxito.');
@@ -105,6 +112,9 @@ export const FormAdmin = () => {
       </FloatingLabel>
       <FloatingLabel controlId="floatingEstreno" label="Estreno" className="formAdmLabel">
         <Form.Control type="date" placeholder="Fecha de estreno" className="containerFormInput" value={estreno} onChange={handleChangeEstreno} />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingVideoURL" label="Video URL" className="formAdmLabel">
+        <Form.Control type="text" placeholder="Video URL" className="containerFormInput" value={video} onChange={handleChangeVideo} />
       </FloatingLabel>
       <FloatingLabel controlId="floatingGeneros" label="Géneros" className="formAdmLabel">
           <Form.Select multiple className="containerFormInput containerGenero" onChange={handleSelectGenero}>
