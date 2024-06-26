@@ -2,6 +2,7 @@
 
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function hasRequiredPermissions(requiredPermissions: string[], userPermissions: string[]): boolean {
   return requiredPermissions.some((permissions) =>
@@ -12,25 +13,32 @@ function hasRequiredPermissions(requiredPermissions: string[], userPermissions: 
 export function withRoles(Component: any, requiredPermissions: string[], goBackRoute: string) {
   return function WithRolesWrapper(props: any) {
     const router = useRouter();
+    const [hasPermission, setHasPermission] = useState(false);
 
-    const token = localStorage.getItem('accessToken');
 
-    let userPermissions : string[] = [];
-    if (token) {
-      const decodedToken: { role: string[] } = jwtDecode(token);
+    useEffect(() => {
+      const token = localStorage.getItem('accessToken');
 
-      if (decodedToken.role) {
-        userPermissions = decodedToken.role;
+      let userPermissions: string[] = [];
+      if (token) {
+        const decodedToken: { role: string[] } = jwtDecode(token);
+
+        if (decodedToken.role) {
+          userPermissions = decodedToken.role;
+        }
       }
+
+      if (hasRequiredPermissions(requiredPermissions, userPermissions)) {
+        setHasPermission(true);
+      } else {
+        router.push(goBackRoute);
+      }
+    }, [router, requiredPermissions, goBackRoute]);
+
+    if (!hasPermission) {
+      return null;
     }
 
-
-    const hasPermission = hasRequiredPermissions(requiredPermissions, userPermissions)
-    if (hasPermission) {
-      return <Component {...props} />
-    } else {
-      router.push(goBackRoute)
-      return null
-    }
+    return <Component {...props} />;
   }
 }
