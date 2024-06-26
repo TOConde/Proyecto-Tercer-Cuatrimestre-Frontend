@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './TablaPelicula.css';
 import { Button, Modal, Table } from 'react-bootstrap';
-import clienteAxios from '@/app/services/Axios';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { deleteMovies, getAllMovies } from '@/app/services/Peliculas';
 
 interface Pelicula {
   peliculaID: number;
@@ -24,8 +24,8 @@ const TablaPelicula: React.FC = () => {
   useEffect(() => {
     const buscarPeliculas = async () => {
       try {
-        const res = await clienteAxios.get('/peliculas/all');
-        setPeliculas(res.data);
+        const allMovies = await getAllMovies();
+        setPeliculas(allMovies);
       } catch (error) {
         console.log('Error al buscar peliculas:', error);
       }
@@ -43,7 +43,7 @@ const TablaPelicula: React.FC = () => {
 
   const handleDelete = async (peliculaID: number) => {
     try {
-      await clienteAxios.delete('/peliculas/${peliculaID}')
+      await deleteMovies(peliculaID);
       setPeliculas(peliculas.filter(pelicula => pelicula.peliculaID !== peliculaID));
     } catch (error) {
       console.log('Error al eliminar la pelicula:', error);
@@ -66,7 +66,7 @@ const TablaPelicula: React.FC = () => {
           <tr key={pelicula.peliculaID}>
             <td>{pelicula.titulo}</td>
             <td>{pelicula.sinopsis}</td>
-            <td>{pelicula.fechaEstreno}</td>
+            <td>{new Date(pelicula.fechaEstreno).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit'})}</td>
             <td>{pelicula.duracion}</td>
             <td>
               <FaEdit onClick={handleShowModal} className='editIconTabla' />
@@ -74,7 +74,9 @@ const TablaPelicula: React.FC = () => {
                 <Modal.Header closeButton>
                   <Modal.Title>Editando... Guarde los cambios al salir</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                  Woohoo, you are reading this text in a modal!
+                </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleCloseModal}>
                     Close

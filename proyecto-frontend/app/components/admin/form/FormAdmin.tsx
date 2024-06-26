@@ -1,7 +1,7 @@
 import './FormAdmin.css'
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import { agregarPelicula, getAllGeneros } from '@/app/services/AgregarPelicula';
+import { agregarPelicula, getAllGeneros } from '@/app/services/Peliculas';
 
 export const FormAdmin = () => {
   const [titulo, setTitulo] = useState('');
