@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import './TablaPelicula.css';
-import { Button, Modal, Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { deleteMovies, getAllMovies } from '@/app/services/Peliculas';
+import EditMovieModal from '../editPeliculaModal/EditPeliculaModal';
 
-interface Pelicula {
+export interface Pelicula {
   peliculaID: number;
   titulo: string;
   sinopsis: string;
@@ -20,6 +21,7 @@ interface Pelicula {
 const TablaPelicula: React.FC = () => {
   const [peliculas, setPeliculas] = useState<Pelicula[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const [selectedPelicula, setSelectedPelicula] = useState<Pelicula | null>(null);
 
   useEffect(() => {
     const buscarPeliculas = async () => {
@@ -34,11 +36,14 @@ const TablaPelicula: React.FC = () => {
     buscarPeliculas();
   }, [])
 
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedPelicula(null);
+  }
 
-  const handleEdit = (peliculaID: number) => {
-    // Hacer que habra el modal, traiga toda la info a editar de la peli clickeada etc.
+  const handleShowModal = (pelicula: Pelicula) => {
+    setSelectedPelicula(pelicula);
+    setShowModal(true);
   }
 
   const handleDelete = async (peliculaID: number) => {
@@ -51,7 +56,8 @@ const TablaPelicula: React.FC = () => {
   }
 
   return (
-    <Table>
+    <>
+      <Table>
       <thead>
         <tr>
           <th>Título</th>
@@ -69,29 +75,22 @@ const TablaPelicula: React.FC = () => {
             <td>{new Date(pelicula.fechaEstreno).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit'})}</td>
             <td>{pelicula.duracion}</td>
             <td>
-              <FaEdit onClick={handleShowModal} className='editIconTabla' />
-              <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Editando... Guarde los cambios al salir</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  Woohoo, you are reading this text in a modal!
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleCloseModal}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleCloseModal}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
-              </Modal>
+              <FaEdit onClick={() => handleShowModal(pelicula)} className='editIconTabla' />            
               <FaTrash onClick={() => handleDelete(pelicula.peliculaID)} className='deleteIconTabla' />
             </td>
           </tr>
         )}
       </tbody>
     </Table>
+
+    {selectedPelicula && (
+      <EditMovieModal
+        show={showModal}
+        handleClose={handleCloseModal}
+        pelicula={selectedPelicula}
+      />
+    )}
+    </>
   )
 }
 
