@@ -3,7 +3,7 @@ import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { agregarPelicula, getAllGeneros } from '@/app/services/Peliculas';
 
-export const FormAdmin = () => {
+export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => void }) => {
   const [titulo, setTitulo] = useState('');
   const [sinopsis, setSinopsis] = useState('');
   const [duracion, setDuracion] = useState('');
@@ -94,6 +94,7 @@ export const FormAdmin = () => {
       setSelectedGeneros([]);
       setFileName('Formato .jpg/.jpeg/.png');
       console.log('Película cargada con éxito.');
+      actualizarPeliculas();
     } else {
       console.log('Error al cargar la película.');
     }

@@ -1,9 +1,10 @@
+'use client'
 import { useEffect, useState } from 'react';
 import './TablaPelicula.css';
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { deleteMovies, getAllMovies } from '@/app/services/Peliculas';
-import EditMovieModal from '../editPeliculaModal/EditPeliculaModal';
+import { deleteMovies } from '@/app/services/Peliculas';
+import EditPeliculaModal from '../editPeliculaModal/EditPeliculaModal';
 
 export interface Pelicula {
   peliculaID: number;
@@ -17,24 +18,14 @@ export interface Pelicula {
   display_url_image: string;
 }
 
+interface TablaPeliculaProps {
+  peliculas: Pelicula[];
+  actualizarPeliculas: () => void;
+}
 
-const TablaPelicula: React.FC = () => {
-  const [peliculas, setPeliculas] = useState<Pelicula[]>([]);
+const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeliculas }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedPelicula, setSelectedPelicula] = useState<Pelicula | null>(null);
-
-  useEffect(() => {
-    const buscarPeliculas = async () => {
-      try {
-        const allMovies = await getAllMovies();
-        setPeliculas(allMovies);
-      } catch (error) {
-        console.log('Error al buscar peliculas:', error);
-      }
-    }
-
-    buscarPeliculas();
-  }, [])
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -49,7 +40,7 @@ const TablaPelicula: React.FC = () => {
   const handleDelete = async (peliculaID: number) => {
     try {
       await deleteMovies(peliculaID);
-      setPeliculas(peliculas.filter(pelicula => pelicula.peliculaID !== peliculaID));
+      actualizarPeliculas();
     } catch (error) {
       console.log('Error al eliminar la pelicula:', error);
     }
@@ -84,10 +75,11 @@ const TablaPelicula: React.FC = () => {
     </Table>
 
     {selectedPelicula && (
-      <EditMovieModal
+      <EditPeliculaModal
         show={showModal}
         handleClose={handleCloseModal}
         pelicula={selectedPelicula}
+        actualizarPeliculas={actualizarPeliculas}
       />
     )}
     </>
