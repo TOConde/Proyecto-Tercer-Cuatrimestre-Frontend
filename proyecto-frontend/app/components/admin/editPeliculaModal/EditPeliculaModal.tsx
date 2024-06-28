@@ -62,7 +62,7 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
             <Form.Label>Duración</Form.Label>
             <Form.Control type="number" name='duracion' value={updatedPelicula.duracion} onChange={handleInputChange} />
           </Form.Group>
-          <Form.Group controlId="formTitulo">
+          <Form.Group controlId="formUrlVideo">
             <Form.Label>Enlace al Video</Form.Label>
             <Form.Control type="text" name='urlVideo' value={updatedPelicula.urlVideo} onChange={handleInputChange} />
           </Form.Group>
