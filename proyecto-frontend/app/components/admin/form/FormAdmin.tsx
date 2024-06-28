@@ -15,7 +15,7 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
 
   const [img, setImg] = useState<File | null>(null);
   const [fileName, setFileName] = useState('Formato .jpg/.jpeg/.png');
-  
+
   useEffect(() => {
     const fetchGeneros = async () => {
       try {
@@ -82,7 +82,7 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
     pelicula.append('urlVideo', video);
     pelicula.append('generos', JSON.stringify(selectedGeneros));
     pelicula.append('img', img);
-    
+
 
     const agregadoExitoso = await agregarPelicula(pelicula);
     if (agregadoExitoso) {
@@ -118,12 +118,12 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
         <Form.Control type="text" placeholder="Video URL" className="containerFormInput" value={video} onChange={handleChangeVideo} />
       </FloatingLabel>
       <FloatingLabel controlId="floatingGeneros" label="Géneros" className="formAdmLabel">
-          <Form.Select multiple className="containerFormInput containerGenero" onChange={handleSelectGenero}>
-            {generos.map((genero: any) => (
-              <option key={genero.generoID} value={genero.generoID}>{genero.nombreGenero}</option>
-            ))}
-          </Form.Select>
-        </FloatingLabel>
+        <Form.Select multiple className="containerFormInput containerGenero" onChange={handleSelectGenero}>
+          {generos.map((genero: any) => (
+            <option key={genero.generoID} value={genero.generoID}>{genero.nombreGenero}</option>
+          ))}
+        </Form.Select>
+      </FloatingLabel>
       <div className="formAdmLabel">
         <label htmlFor="file" className="fileInputLabel">Seleccionar imagen...</label>
         <input type="file" id="file" className="fileInput" onChange={handleChangeImg} />

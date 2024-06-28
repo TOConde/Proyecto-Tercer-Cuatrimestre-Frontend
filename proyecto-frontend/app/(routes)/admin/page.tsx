@@ -12,22 +12,22 @@ const Page = () => {
 
     const actualizarPeliculas = async () => {
         try {
-          const allMovies = await getAllMovies();
-          setPeliculas(allMovies);
+            const allMovies = await getAllMovies();
+            setPeliculas(allMovies);
         } catch (error) {
-          console.log('Error al buscar peliculas:', error);
+            console.log('Error al buscar peliculas:', error);
         }
-      }
-    
-      useEffect(() => {
+    }
+
+    useEffect(() => {
         actualizarPeliculas();
-      }, [])
+    }, [])
 
     return (
         <div className={styles.main}>
-            <TituloAdmin />        
-            <FormAdmin actualizarPeliculas={actualizarPeliculas}/>
-            <TablaPelicula peliculas={peliculas} actualizarPeliculas={actualizarPeliculas}/>
+            <TituloAdmin />
+            <FormAdmin actualizarPeliculas={actualizarPeliculas} />
+            <TablaPelicula peliculas={peliculas} actualizarPeliculas={actualizarPeliculas} /> 
         </div>
     )
 }

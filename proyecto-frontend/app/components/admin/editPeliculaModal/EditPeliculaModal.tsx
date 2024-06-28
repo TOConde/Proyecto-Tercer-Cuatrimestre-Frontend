@@ -48,23 +48,23 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
         <Form>
           <Form.Group controlId="formTitulo">
             <Form.Label>Título</Form.Label>
-            <Form.Control type="text" name='titulo' value={updatedPelicula.titulo} onChange={handleInputChange}/>
+            <Form.Control type="text" name='titulo' value={updatedPelicula.titulo} onChange={handleInputChange} />
           </Form.Group>
           <Form.Group controlId="formSinopsis">
             <Form.Label>Sinopsis</Form.Label>
-            <Form.Control as="textarea" rows={3} name='sinopsis' value={updatedPelicula.sinopsis} onChange={handleInputChange}/>
+            <Form.Control as="textarea" rows={3} name='sinopsis' value={updatedPelicula.sinopsis} onChange={handleInputChange} />
           </Form.Group>
           <Form.Group controlId="formFechaEstreno">
             <Form.Label>Fecha de Estreno</Form.Label>
-            <Form.Control type="date" name='fechaEstreno' value={new Date(updatedPelicula.fechaEstreno).toISOString().substring(0, 10)} onChange={handleInputChange}/>
+            <Form.Control type="date" name='fechaEstreno' value={new Date(updatedPelicula.fechaEstreno).toISOString().substring(0, 10)} onChange={handleInputChange} />
           </Form.Group>
           <Form.Group controlId="formDuracion">
             <Form.Label>Duración</Form.Label>
-            <Form.Control type="number" name='duracion' value={updatedPelicula.duracion} onChange={handleInputChange}/>
+            <Form.Control type="number" name='duracion' value={updatedPelicula.duracion} onChange={handleInputChange} />
           </Form.Group>
           <Form.Group controlId="formTitulo">
             <Form.Label>Enlace al Video</Form.Label>
-            <Form.Control type="text" name='urlVideo' value={updatedPelicula.urlVideo} onChange={handleInputChange}/>
+            <Form.Control type="text" name='urlVideo' value={updatedPelicula.urlVideo} onChange={handleInputChange} />
           </Form.Group>
         </Form>
       </Modal.Body>

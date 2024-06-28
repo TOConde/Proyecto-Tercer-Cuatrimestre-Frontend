@@ -49,39 +49,39 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
   return (
     <>
       <Table>
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Sinopsis</th>
-          <th>Fecha de Estreno</th>
-          <th>Duración(min.)</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        {peliculas.map((pelicula) =>
-          <tr key={pelicula.peliculaID}>
-            <td>{pelicula.titulo}</td>
-            <td>{pelicula.sinopsis}</td>
-            <td>{new Date(pelicula.fechaEstreno).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit'})}</td>
-            <td>{pelicula.duracion}</td>
-            <td>
-              <FaEdit onClick={() => handleShowModal(pelicula)} className='editIconTabla' />            
-              <FaTrash onClick={() => handleDelete(pelicula.peliculaID)} className='deleteIconTabla' />
-            </td>
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Sinopsis</th>
+            <th>Fecha de Estreno</th>
+            <th>Duración(min.)</th>
+            <th>Acciones</th>
           </tr>
-        )}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {peliculas.map((pelicula) =>
+            <tr key={pelicula.peliculaID}>
+              <td>{pelicula.titulo}</td>
+              <td>{pelicula.sinopsis}</td>
+              <td>{new Date(pelicula.fechaEstreno).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })}</td>
+              <td>{pelicula.duracion}</td>
+              <td>
+                <FaEdit onClick={() => handleShowModal(pelicula)} className='editIconTabla' />
+                <FaTrash onClick={() => handleDelete(pelicula.peliculaID)} className='deleteIconTabla' />
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </Table>
 
-    {selectedPelicula && (
-      <EditPeliculaModal
-        show={showModal}
-        handleClose={handleCloseModal}
-        pelicula={selectedPelicula}
-        actualizarPeliculas={actualizarPeliculas}
-      />
-    )}
+      {selectedPelicula && (
+        <EditPeliculaModal
+          show={showModal}
+          handleClose={handleCloseModal}
+          pelicula={selectedPelicula}
+          actualizarPeliculas={actualizarPeliculas}
+        />
+      )}
     </>
   )
 }
