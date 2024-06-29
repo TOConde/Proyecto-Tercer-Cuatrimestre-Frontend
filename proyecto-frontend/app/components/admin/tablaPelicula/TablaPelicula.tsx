@@ -1,8 +1,8 @@
 'use client'
 import { useState } from 'react';
 import './TablaPelicula.css';
-import { Pagination, Table } from 'react-bootstrap';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FormControl, InputGroup, Pagination, Table } from 'react-bootstrap';
+import { FaEdit, FaSearch, FaTrash } from 'react-icons/fa';
 import { deleteMovies } from '@/app/services/Peliculas';
 import EditPeliculaModal from '../editPeliculaModal/EditPeliculaModal';
 
@@ -26,25 +26,29 @@ interface TablaPeliculaProps {
 const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeliculas }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedPelicula, setSelectedPelicula] = useState<Pelicula | null>(null);
-
   const [currentPage, setCurrentPage] = useState(1);
   const peliculasPerPage = 5;
+  const [search, setSearch] = useState('')
 
-  const handlePageClick = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  }
+  const filteredPeliculas = peliculas.filter(pelicula =>
+    pelicula.titulo.toLowerCase().includes(search.toLowerCase())
+  );
 
   const offset = (currentPage - 1) * peliculasPerPage; //Para que al pasar de pagina no repita las peliculas de la pag anterior
-  const currentItems = peliculas.slice(offset, offset + peliculasPerPage);
-  const pageCount = Math.ceil(peliculas.length / peliculasPerPage);
+  const currentItems = filteredPeliculas.slice(offset, offset + peliculasPerPage);
+  const pageCount = Math.ceil(filteredPeliculas.length / peliculasPerPage);
 
   const paginationItems = [];
   for (let number = 1; number <= pageCount; number++) {
     paginationItems.push(
-      <Pagination.Item key={number} active={number ===currentPage} onClick={() => handlePageClick(number)}>
+      <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageClick(number)}>
         {number}
       </Pagination.Item>
     )
+  }
+  
+  const handlePageClick = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
   }
 
   const handleCloseModal = () => {
@@ -66,8 +70,24 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
     }
   }
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  }
+
   return (
     <>
+      <InputGroup className="searchTableTitle">
+        <FormControl
+          placeholder="Buscar por título"
+          value={search}
+          onChange={handleSearchChange}
+        />
+        <InputGroup.Text>
+          <FaSearch />
+        </InputGroup.Text>
+      </InputGroup>
+
       <Table>
         <thead>
           <tr>
@@ -95,7 +115,7 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
       </Table>
 
       <Pagination className='paginationTab'>
-        <Pagination.First onClick={() => handlePageClick(1)} disabled={currentPage === 1}/>
+        <Pagination.First onClick={() => handlePageClick(1)} disabled={currentPage === 1} />
         <Pagination.Prev onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1} />
         {paginationItems}
         <Pagination.Next onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === pageCount} />
@@ -115,4 +135,3 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
 }
 
 export default TablaPelicula;
-
