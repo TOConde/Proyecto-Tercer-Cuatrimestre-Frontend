@@ -1,7 +1,7 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './TablaPelicula.css';
-import { Table } from 'react-bootstrap';
+import { Pagination, Table } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { deleteMovies } from '@/app/services/Peliculas';
 import EditPeliculaModal from '../editPeliculaModal/EditPeliculaModal';
@@ -26,6 +26,26 @@ interface TablaPeliculaProps {
 const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeliculas }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedPelicula, setSelectedPelicula] = useState<Pelicula | null>(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const peliculasPerPage = 5;
+
+  const handlePageClick = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  }
+
+  const offset = (currentPage - 1) * peliculasPerPage; //Para que al pasar de pagina no repita las peliculas de la pag anterior
+  const currentItems = peliculas.slice(offset, offset + peliculasPerPage);
+  const pageCount = Math.ceil(peliculas.length / peliculasPerPage);
+
+  const paginationItems = [];
+  for (let number = 1; number <= pageCount; number++) {
+    paginationItems.push(
+      <Pagination.Item key={number} active={number ===currentPage} onClick={() => handlePageClick(number)}>
+        {number}
+      </Pagination.Item>
+    )
+  }
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -59,7 +79,7 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
           </tr>
         </thead>
         <tbody>
-          {peliculas.map((pelicula) =>
+          {currentItems.map((pelicula) =>
             <tr key={pelicula.peliculaID}>
               <td>{pelicula.titulo}</td>
               <td>{pelicula.sinopsis}</td>
@@ -74,6 +94,14 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
         </tbody>
       </Table>
 
+      <Pagination className='paginationTab'>
+        <Pagination.First onClick={() => handlePageClick(1)} disabled={currentPage === 1}/>
+        <Pagination.Prev onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1} />
+        {paginationItems}
+        <Pagination.Next onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === pageCount} />
+        <Pagination.Last onClick={() => handlePageClick(pageCount)} disabled={currentPage === pageCount} />
+      </Pagination>
+
       {selectedPelicula && (
         <EditPeliculaModal
           show={showModal}
@@ -87,3 +115,4 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
 }
 
 export default TablaPelicula;
+
