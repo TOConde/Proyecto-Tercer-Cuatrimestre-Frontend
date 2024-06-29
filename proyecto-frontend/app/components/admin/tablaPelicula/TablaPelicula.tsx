@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './TablaPelicula.css';
 import { Table } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
