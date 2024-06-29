@@ -41,10 +41,10 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className='containerFormEditMovie'>
         <Modal.Title>Editando película: {pelicula.titulo}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className='containerFormEditMovie'>
         <Form>
           <Form.Group controlId="formTitulo">
             <Form.Label>Título</Form.Label>
@@ -68,11 +68,11 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
           </Form.Group>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className='containerFormEditMovie'>
         <Button variant="secondary" onClick={handleClose}>
           Cerrar
         </Button>
-        <Button variant="primary" onClick={handleSaveChange}>
+        <Button variant="primary bttnGuardarCambios" onClick={handleSaveChange}>
           Guardar Cambios
         </Button>
       </Modal.Footer>

@@ -46,7 +46,7 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
       </Pagination.Item>
     )
   }
-  
+
   const handlePageClick = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   }
@@ -88,31 +88,33 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
         </InputGroup.Text>
       </InputGroup>
 
-      <Table>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Sinopsis</th>
-            <th>Fecha de Estreno</th>
-            <th>Duración(min.)</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.map((pelicula) =>
-            <tr key={pelicula.peliculaID}>
-              <td>{pelicula.titulo}</td>
-              <td>{pelicula.sinopsis}</td>
-              <td>{new Date(pelicula.fechaEstreno).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })}</td>
-              <td>{pelicula.duracion}</td>
-              <td>
-                <FaEdit onClick={() => handleShowModal(pelicula)} className='editIconTabla' />
-                <FaTrash onClick={() => handleDelete(pelicula.peliculaID)} className='deleteIconTabla' />
-              </td>
+      <div className='containerMovieTable'>
+        <Table striped hover variant="dark" bordered className='movieTable'>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Sinopsis</th>
+              <th>Fecha de Estreno</th>
+              <th>Duración(min.)</th>
+              <th>Acciones</th>
             </tr>
-          )}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {currentItems.map((pelicula) =>
+              <tr key={pelicula.peliculaID}>
+                <td>{pelicula.titulo}</td>
+                <td>{pelicula.sinopsis}</td>
+                <td>{new Date(pelicula.fechaEstreno).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })}</td>
+                <td>{pelicula.duracion}</td>
+                <td>
+                  <FaEdit onClick={() => handleShowModal(pelicula)} className='editIconTabla' />
+                  <FaTrash onClick={() => handleDelete(pelicula.peliculaID)} className='deleteIconTabla' />
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
+      </div>
 
       <Pagination className='paginationTab'>
         <Pagination.First onClick={() => handlePageClick(1)} disabled={currentPage === 1} />
