@@ -6,3 +6,9 @@
 .deleteIconTabla {
   cursor: pointer;
 }
+
+.paginationTab {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
