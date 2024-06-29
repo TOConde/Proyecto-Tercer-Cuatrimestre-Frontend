@@ -6,13 +6,13 @@ import './Menu.css';
 
 const Menu: React.FC = () => {
 
-    const [activeSection, setActiveSection] = useState<ActiveSection>('profile');
+    const [activeSection, setActiveSection] = useState<ActiveSection>('perfil');
 
     const generalSections = [
-        { id: 'profile', title: 'Profile' },
-        { id: 'account', title: 'Account' },
-        { id: 'notifications', title: 'Notifications' },
-        { id: 'privacy', title: 'Privacy' },
+        { id: 'perfil', title: 'Perfil' },
+        { id: 'preferencias', title: 'Preferencias' },
+        { id: 'suscripcion', title: 'Suscripción' },
+        { id: 'notificaciones', title: 'Notificaciones' },
     ];
 
     const cuentaSections = [
