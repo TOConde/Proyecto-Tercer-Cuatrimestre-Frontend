@@ -1,5 +1,5 @@
 import './FormAdmin.css'
-import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { agregarPelicula, getAllGeneros } from '@/app/services/Peliculas';
 
@@ -49,16 +49,11 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
     setVideo(e.target.value);
   };
 
-  const handleSelectGenero = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const options = Array.from(e.target.options);
-    const selected: number[] = [];
-    options.forEach(option => {
-      if (option.selected) {
-        selected.push(Number(option.value));
-      }
-    });
-    setSelectedGeneros(selected);
-  };
+  const handleSelectGenero = (generoID: number) => {
+    setSelectedGeneros((prev) =>
+      prev.includes(generoID) ? prev.filter(id => id !== generoID) : [...prev, generoID]
+    );
+  }; //
 
   const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -114,16 +109,24 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
       <FloatingLabel controlId="floatingEstreno" label="Estreno" className="formAdmLabel">
         <Form.Control type="date" placeholder="Fecha de estreno" className="containerFormInput" value={estreno} onChange={handleChangeEstreno} />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingVideoURL" label="Video URL" className="formAdmLabel">
-        <Form.Control type="text" placeholder="Video URL" className="containerFormInput" value={video} onChange={handleChangeVideo} />
+      <FloatingLabel controlId="floatingVideoURL" label="Enlace al Video" className="formAdmLabel">
+        <Form.Control type="text" placeholder="Enlace al Video" className="containerFormInput" value={video} onChange={handleChangeVideo} />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingGeneros" label="Géneros" className="formAdmLabel">
-        <Form.Select multiple className="containerFormInput containerGenero" onChange={handleSelectGenero}>
+      <Form.Group controlId="formGeneros" className='formAdmLabel'>
+        <Form.Label>Géneros</Form.Label>
+        <Row>
           {generos.map((genero: any) => (
-            <option key={genero.generoID} value={genero.generoID}>{genero.nombreGenero}</option>
+            <Col key={genero.generoID} xs={6}>
+              <Form.Check
+                type="checkbox"
+                label={genero.nombreGenero}
+                onChange={() => handleSelectGenero(genero.generoID)}
+                checked={selectedGeneros.includes(genero.generoID)}
+              />
+            </Col>
           ))}
-        </Form.Select>
-      </FloatingLabel>
+        </Row>
+      </Form.Group>
       <div className="formAdmLabel">
         <label htmlFor="file" className="fileInputLabel">Seleccionar imagen...</label>
         <input type="file" id="file" className="fileInput" onChange={handleChangeImg} />
