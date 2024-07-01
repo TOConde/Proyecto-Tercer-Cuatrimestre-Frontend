@@ -80,6 +80,7 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
       <InputGroup className="searchTableTitle">
         <FormControl
           placeholder="Buscar por título"
+          name='buscarTitulo'
           value={search}
           onChange={handleSearchChange}
         />
