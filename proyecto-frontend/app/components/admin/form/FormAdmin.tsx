@@ -119,6 +119,7 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
             <Col key={genero.generoID} xs={6}>
               <Form.Check
                 type="checkbox"
+                id={`genero-${genero.generoID}`}
                 label={genero.nombreGenero}
                 onChange={() => handleSelectGenero(genero.generoID)}
                 checked={selectedGeneros.includes(genero.generoID)}
