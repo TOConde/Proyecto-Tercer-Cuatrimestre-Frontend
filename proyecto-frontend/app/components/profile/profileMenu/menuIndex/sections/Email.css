@@ -1,0 +1,38 @@
+.change-email-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .change-email-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .change-email-card-text {
+    margin-bottom: 1rem;
+  }
+  
+  .change-email-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .change-email-button {
+    background-color: #FF6702;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .change-email-button:hover {
+    background-color: #e65c00;
+  }
+  
+  .change-email-support {
+    margin-top: 1rem;
+  }

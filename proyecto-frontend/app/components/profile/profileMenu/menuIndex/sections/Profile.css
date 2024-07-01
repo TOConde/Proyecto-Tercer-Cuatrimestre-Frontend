@@ -1,52 +1,40 @@
-.profile-form {
-    max-width: 400px;
-    margin: auto;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profile-form .form-label {
-    font-weight: bold;
-  }
-  
-  .profile-form .form-control {
-    margin-bottom: 1rem;
-  }
-  
-  .fileInputLabel {
-    display: block;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: #FF6702;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-  }
-  
-  .fileInput {
-    display: none;
-  }
-  
-  .fileName {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  button[type="submit"] {
-    background-color: #FF6702;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #e65c00;
-  }
+.profile-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.profile-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.profile-form-group {
+  margin-bottom: 1rem;
+}
+
+.profile-form-select {
+  margin-top: 0.5rem;
+}
+
+.profile-button {
+  margin-top: 1rem;
+  background-color: #FF6702;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.profile-button:hover {
+  background-color: #e65c00;
+}

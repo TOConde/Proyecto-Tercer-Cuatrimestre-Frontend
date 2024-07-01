@@ -1,0 +1,43 @@
+.notifications-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .notifications-card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .notifications-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .notifications-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .notifications-form-select {
+    margin-top: 0.5rem;
+  }
+  
+  .notifications-form-switch {
+    margin-top: 1rem;
+  }
+  
+  .notifications-list-group {
+    margin-top: 1rem;
+  }
+  
+  .notifications-list-group-item {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .notifications-list-group-item:last-child {
+    border-bottom: none;
+  }

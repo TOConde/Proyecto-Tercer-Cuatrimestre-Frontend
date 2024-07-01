@@ -1,0 +1,37 @@
+.preferences-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .preferences-card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .preferences-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .preferences-card-text {
+    margin-bottom: 1rem;
+  }
+  
+  .preferences-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .preferences-floating-label {
+    margin-top: 0.5rem;
+  }
+  
+  .preferences-form-select {
+    margin-top: 1rem;
+  }
+  
+  .preferences-button {
+    margin-top: 1rem;
+  }
