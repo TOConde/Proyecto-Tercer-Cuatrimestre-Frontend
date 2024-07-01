@@ -1,9 +1,10 @@
-import { getAllGeneros } from '@/app/services/Peliculas';
 import React, { useEffect, useState } from 'react';
+import { getAllGeneros } from '@/app/services/Peliculas';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import './Preferences.css';
 
 function Preferences() {
     const [generos, setGeneros] = useState([]);
@@ -34,17 +35,17 @@ function Preferences() {
     };
 
     return (
-        <Card style={{ width: '100%', maxWidth: '500px', margin: '0 auto', padding: '1rem' }}>
-            <Card.Body>
-                <Card.Title>Preferencias</Card.Title>
-                <Card.Text>
+        <Card className="preferences-card">
+            <Card.Body className="preferences-card-body">
+                <Card.Title className="preferences-card-title">Preferencias</Card.Title>
+                <Card.Text className="preferences-card-text">
                     Seleccione sus gustos y preferencias de idioma
                 </Card.Text>
                 <Form>
-                    <Form.Group>
+                    <Form.Group className="preferences-form-group">
                         <Form.Label>Seleccione sus gustos</Form.Label>
-                        <FloatingLabel controlId="floatingGeneros" label="Géneros" className="formAdmLabel">
-                            <Form.Select multiple className="containerFormInput containerGenero" onChange={handleSelectGenero}>
+                        <FloatingLabel controlId="floatingGeneros" label="Géneros" className="preferences-floating-label">
+                            <Form.Select multiple className="preferences-form-select" onChange={handleSelectGenero}>
                                 {generos.map((genero: any) => (
                                     <option key={genero.generoID} value={genero.generoID}>
                                         {genero.nombreGenero}
@@ -54,7 +55,7 @@ function Preferences() {
                         </FloatingLabel>
                     </Form.Group>
 
-                    <Form.Group controlId="formIdioma" style={{ marginTop: '1rem' }}>
+                    <Form.Group controlId="formIdioma" className="preferences-form-group">
                         <Form.Label>Idioma de preferencia</Form.Label>
                         <Form.Control as="select">
                             <option>Español</option>
@@ -63,7 +64,7 @@ function Preferences() {
                         </Form.Control>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" style={{ marginTop: '1rem' }}>
+                    <Button variant="primary" type="submit" className="preferences-button">
                         Editar
                     </Button>
                 </Form>

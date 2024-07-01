@@ -1,8 +1,9 @@
-import { editUserNotifications, getUserById } from '@/app/services/User';
 import React, { useEffect, useState } from 'react';
+import { editUserNotifications, getUserById } from '@/app/services/User';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
+import './Notifications.css';
 
 function Notifications() {
   const [notificaciones, setNotificaciones] = useState<number>();
@@ -25,11 +26,11 @@ function Notifications() {
   }, []);
 
   const handleSwitchChange = async () => {
-    const newSwitchValue = !switchNotificaciones; 
+    const newSwitchValue = !switchNotificaciones;
     setSwitchNotificaciones(newSwitchValue);
 
     try {
-      await editUserNotifications({ recibirCorreos: newSwitchValue ? 1 : 0 }); 
+      await editUserNotifications({ recibirCorreos: newSwitchValue ? 1 : 0 });
     } catch (error) {
       console.error('No se pudo modificar las notificaciones', error);
       setSwitchNotificaciones(!newSwitchValue);
@@ -37,13 +38,13 @@ function Notifications() {
   };
 
   return (
-    <Card style={{ width: '100%', maxWidth: '500px', margin: '0 auto', padding: '1rem' }}>
-      <Card.Body>
-        <Card.Title>Notificaciones</Card.Title>
+    <Card className="notifications-card">
+      <Card.Body className="notifications-card-body">
+        <Card.Title className="notifications-card-title">Notificaciones</Card.Title>
         <Form>
-          <Form.Group controlId="formPais">
+          <Form.Group controlId="formPais" className="notifications-form-group">
             <Form.Label>Idioma de los correos</Form.Label>
-            <Form.Select>
+            <Form.Select className="notifications-form-select">
               <option>Español</option>
               <option>Portugués</option>
               <option>Inglés</option>
@@ -55,11 +56,12 @@ function Notifications() {
             label="Recibir correos"
             checked={switchNotificaciones}
             onChange={handleSwitchChange}
+            className="notifications-form-switch"
           />
-          <ListGroup style={{ marginTop: '1rem' }}>
-            <ListGroup.Item>Ofertas de la tienda</ListGroup.Item>
-            <ListGroup.Item>Noticias</ListGroup.Item>
-            <ListGroup.Item>Actualización de promociones</ListGroup.Item>
+          <ListGroup className="notifications-list-group">
+            <ListGroup.Item className="notifications-list-group-item">Ofertas de la tienda</ListGroup.Item>
+            <ListGroup.Item className="notifications-list-group-item">Noticias</ListGroup.Item>
+            <ListGroup.Item className="notifications-list-group-item">Actualización de promociones</ListGroup.Item>
           </ListGroup>
         </Form>
       </Card.Body>

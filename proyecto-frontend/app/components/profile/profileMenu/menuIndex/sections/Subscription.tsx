@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/esm/ListGroup';
+import ListGroup from 'react-bootstrap/ListGroup';
 import { editUserSubscription, getUserById } from '@/app/services/User';
+import './Subscription.css';
 
 function Subscriptions() {
   const [subscription, setSubscription] = useState<number>();
@@ -21,7 +22,6 @@ function Subscriptions() {
     };
 
     fetchData();
-
   }, []);
 
   const handleCardClick = (cardId: number) => {
@@ -31,7 +31,7 @@ function Subscriptions() {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const body = {
-      tipoDeSuscripcion
+      tipoDeSuscripcion,
     };
 
     try {
@@ -42,22 +42,16 @@ function Subscriptions() {
     }
   };
 
-  const cardStyle = (cardId: number) => ({
-    width: '18rem',
-    border: tipoDeSuscripcion === cardId ? '2px solid blue' : '1px solid lightgray',
-    cursor: 'pointer',
-  });
-
   return (
-    <Card style={{ width: '100%', maxWidth: '600px', margin: '0 auto', padding: '1rem' }}>
-      <Card.Body>
-        <Card.Title>Suscripciones</Card.Title>
+    <Card className="subscriptions-card">
+      <Card.Body className="subscriptions-card-body">
+        <Card.Title className="subscriptions-card-title">Suscripciones</Card.Title>
         <div style={{ display: 'flex', gap: '1rem' }}>
-          <Card style={cardStyle(0)} onClick={() => handleCardClick(0)}>
+          <Card className={`subscription-option-card ${tipoDeSuscripcion === 0 ? 'selected' : ''}`} onClick={() => handleCardClick(0)}>
             <Card.Body>
               <Card.Title>Free User</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">0.0$ Mensuales</Card.Subtitle>
-              <ListGroup className="list-group-flush">
+              <ListGroup className="list-group-flush subscription-list-group">
                 <ListGroup.Item>Solo un dispositivo a la vez.</ListGroup.Item>
                 <ListGroup.Item>Resolucion Full HD.</ListGroup.Item>
                 <ListGroup.Item>Acceso limitado en películas y series.</ListGroup.Item>
@@ -65,11 +59,11 @@ function Subscriptions() {
             </Card.Body>
           </Card>
 
-          <Card style={cardStyle(1)} onClick={() => handleCardClick(1)}>
+          <Card className={`subscription-option-card ${tipoDeSuscripcion === 1 ? 'selected' : ''}`} onClick={() => handleCardClick(1)}>
             <Card.Body>
               <Card.Title>Premium User</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">4999.0$ Mensuales</Card.Subtitle>
-              <ListGroup className="list-group-flush">
+              <ListGroup className="list-group-flush subscription-list-group">
                 <ListGroup.Item>Hasta 4 dispositivos a la vez.</ListGroup.Item>
                 <ListGroup.Item>Soporte de resolución 4k.</ListGroup.Item>
                 <ListGroup.Item>Acceso ilimitado.</ListGroup.Item>
@@ -79,12 +73,12 @@ function Subscriptions() {
           </Card>
         </div>
         {subscription !== null && (
-          <div style={{ marginTop: '1rem' }}>
+          <div className="subscription-current">
             <h4>Suscripción actual:</h4>
-            <p>{subscription === 0 ? "Free User" : "Premium User"}</p>
+            <p>{subscription === 0 ? 'Free User' : 'Premium User'}</p>
           </div>
         )}
-        <Button variant="primary" onClick={handleSubmit} style={{ marginTop: '1rem' }}>
+        <Button variant="primary" onClick={handleSubmit} className="subscription-button">
           Gestionar método de pago
         </Button>
       </Card.Body>

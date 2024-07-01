@@ -62,21 +62,21 @@ function Profile() {
     }
 
     return (
-        <Card style={{ width: '100%', maxWidth: '500px', margin: '0 auto', padding: '1rem' }}>
-            <Card.Body>
-                <Card.Title>Perfil</Card.Title>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formNombre">
-                        <Form.Label>Nombre</Form.Label>
-                        <Form.Control type="text" placeholder="" className="containerFormInput" value={nombre} onChange={handleChangeName} />
+        <Card className="profile-card">
+            <Card.Body className="profile-card-body">
+                <Card.Title className="profile-card-title">Perfil</Card.Title>
+                <Form onSubmit={handleSubmit} className="profile-form">
+                    <Form.Group className="mb-3 profile-form-group" controlId="formNombre">
+                        <Form.Label className="form-label">Nombre</Form.Label>
+                        <Form.Control type="text" placeholder="" className="form-control" value={nombre} onChange={handleChangeName} />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formEdad">
-                        <Form.Label>Edad</Form.Label>
-                        <Form.Control type="number" placeholder="" className="containerFormInput" value={edad} onChange={handleChangeEdad} />
+                    <Form.Group className="mb-3 profile-form-group" controlId="formEdad">
+                        <Form.Label className="form-label">Edad</Form.Label>
+                        <Form.Control type="number" placeholder="" className="form-control" value={edad} onChange={handleChangeEdad} />
                     </Form.Group>
-                    <Form.Group controlId="formPais">
-                        <Form.Label>País</Form.Label>
-                        <Form.Select as="select" value={pais} onChange={handleChangePais}>
+                    <Form.Group controlId="formPais" className="profile-form-group">
+                        <Form.Label className="form-label">País</Form.Label>
+                        <Form.Select as="select" className="form-control" value={pais} onChange={handleChangePais}>
                             <option value=""></option>
                             <option value="Argentina">Argentina</option>
                             <option value="Brasil">Brasil</option>
@@ -88,11 +88,11 @@ function Profile() {
                             <option value="Peru">Peru</option>
                         </Form.Select>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formFechaSuscripcion">
-                        <Form.Label>Fecha de Suscripción</Form.Label>
-                        <Form.Control disabled type="date" placeholder="" value={fechaSuscripcion}/>
+                    <Form.Group className="mb-3 profile-form-group" controlId="formFechaSuscripcion">
+                        <Form.Label className="form-label">Fecha de Suscripción</Form.Label>
+                        <Form.Control disabled type="date" placeholder="" className="form-control" value={fechaSuscripcion} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" className="profile-button">
                         Editar
                     </Button>
                 </Form>

@@ -1,0 +1,54 @@
+.subscriptions-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .subscriptions-card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .subscriptions-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .subscription-option-card {
+    width: 18rem;
+    cursor: pointer;
+  }
+  
+  .subscription-option-card.selected {
+    border: 2px solid blue;
+  }
+  
+  .subscription-option-card:not(.selected) {
+    border: 1px solid lightgray;
+  }
+  
+  .subscription-list-group {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .subscription-current {
+    margin-top: 1rem;
+  }
+  
+  .subscription-button {
+    margin-top: 1rem;
+    background-color: #FF6702;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .subscription-button:hover {
+    background-color: #e65c00;
+  }

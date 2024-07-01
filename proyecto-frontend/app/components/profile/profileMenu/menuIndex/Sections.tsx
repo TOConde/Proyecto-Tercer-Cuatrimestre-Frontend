@@ -3,7 +3,7 @@ import Email from './sections/Email';
 import Notifications from './sections/Notifications';
 import Password from './sections/Password';
 import Preferences from './sections/Preferences';
-import Subscriptions from './sections/Suscripcion';
+import Subscriptions from './sections/Subscription';
 
 export type ActiveSection = 'perfil' | 'preferencias' | 'suscripcion' | 'notificaciones' | 'email' | 'password';
 
