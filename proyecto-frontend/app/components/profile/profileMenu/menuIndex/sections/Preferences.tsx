@@ -1,4 +1,4 @@
-import { getAllGeneros } from '@/app/services/AgregarPelicula';
+import { getAllGeneros } from '@/app/services/Peliculas';
 import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
