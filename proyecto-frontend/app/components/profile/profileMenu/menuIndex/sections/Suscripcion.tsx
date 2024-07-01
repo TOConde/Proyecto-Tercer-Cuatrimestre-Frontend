@@ -1,21 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/esm/ListGroup';
+import { editUserSubscription, getUserById } from '@/app/services/User';
 
 function Subscriptions() {
-  const [selectedCard, setSelectedCard] = useState(1);
+  const [subscription, setSubscription] = useState<number>();
+  const [tipoDeSuscripcion, setTipoDeSuscripcion] = useState<number>(0);
 
-  const handleCardClick = (cardId: any) => {
-    setSelectedCard(cardId);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getUserById();
+        if (response.data) {
+          setSubscription(response.data.tipoDeSuscripcion);
+        }
+      } catch (error) {
+        console.error('Error para recuperar la informacion del usuario.', error);
+      }
+    };
+
+    fetchData();
+
+  }, []);
+
+  const handleCardClick = (cardId: number) => {
+    setTipoDeSuscripcion(cardId);
   };
 
-  const handleSubmit = () => {
-    // Add submission logic here
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    const body = {
+      tipoDeSuscripcion
+    };
+
+    try {
+      await editUserSubscription(body);
+      console.log('Perfil Editado.');
+    } catch (error) {
+      console.log('No se pudo editar el perfil.', error);
+    }
   };
 
-  const cardStyle = (cardId: any) => ({
+  const cardStyle = (cardId: number) => ({
     width: '18rem',
-    border: selectedCard === cardId ? '2px solid blue' : '1px solid lightgray',
+    border: tipoDeSuscripcion === cardId ? '2px solid blue' : '1px solid lightgray',
     cursor: 'pointer',
   });
 
@@ -24,41 +53,40 @@ function Subscriptions() {
       <Card.Body>
         <Card.Title>Suscripciones</Card.Title>
         <div style={{ display: 'flex', gap: '1rem' }}>
-          <Card style={cardStyle(1)} onClick={() => handleCardClick(1)}>
+          <Card style={cardStyle(0)} onClick={() => handleCardClick(0)}>
             <Card.Body>
-              <Card.Title>Card Title 1</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">Card Subtitle 1</Card.Subtitle>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
+              <Card.Title>Free User</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">0.0$ Mensuales</Card.Subtitle>
+              <ListGroup className="list-group-flush">
+                <ListGroup.Item>Solo un dispositivo a la vez.</ListGroup.Item>
+                <ListGroup.Item>Resolucion Full HD.</ListGroup.Item>
+                <ListGroup.Item>Acceso limitado en películas y series.</ListGroup.Item>
+              </ListGroup>
             </Card.Body>
           </Card>
 
-          <Card style={cardStyle(2)} onClick={() => handleCardClick(2)}>
+          <Card style={cardStyle(1)} onClick={() => handleCardClick(1)}>
             <Card.Body>
-              <Card.Title>Card Title 2</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">Card Subtitle 2</Card.Subtitle>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
+              <Card.Title>Premium User</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">4999.0$ Mensuales</Card.Subtitle>
+              <ListGroup className="list-group-flush">
+                <ListGroup.Item>Hasta 4 dispositivos a la vez.</ListGroup.Item>
+                <ListGroup.Item>Soporte de resolución 4k.</ListGroup.Item>
+                <ListGroup.Item>Acceso ilimitado.</ListGroup.Item>
+                <ListGroup.Item>50 descargas para disfrutar offline.</ListGroup.Item>
+              </ListGroup>
             </Card.Body>
           </Card>
         </div>
-        <Button onClick={handleSubmit} style={{ marginTop: '1rem' }}>
-          Submit
-        </Button>
-        {selectedCard && (
+        {subscription !== null && (
           <div style={{ marginTop: '1rem' }}>
-            <h4>Selected Card:</h4>
-            <p>Card Title {selectedCard}</p>
+            <h4>Suscripción actual:</h4>
+            <p>{subscription === 0 ? "Free User" : "Premium User"}</p>
           </div>
         )}
+        <Button variant="primary" onClick={handleSubmit} style={{ marginTop: '1rem' }}>
+          Gestionar método de pago
+        </Button>
       </Card.Body>
     </Card>
   );

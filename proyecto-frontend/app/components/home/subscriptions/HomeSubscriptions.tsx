@@ -6,7 +6,7 @@ export const HomeSuscriptions = () => {
             <div className="card-group">
                 <div className="card cardContainer">
                     <div className="card-body">
-                        <h5 className="card-title">Basico con anuncios</h5>
+                        <h5 className="card-title">Free User</h5>
                         <p className="card-text">Solo un dispositivo a la vez.</p>
                         <p className="card-text">Resolucion Full HD.</p>
                         <p className="card-text">Acceso limitado en peliculas y series.</p>
@@ -20,7 +20,7 @@ export const HomeSuscriptions = () => {
                         <p className="card-text">Resolucion 4k.</p>
                         <p className="card-text">Acceso ilimitado.</p>
                         <p className="card-text">50 descargas para disfrutar offline.</p>
-                        <p className="card-text">4.999/mes</p>
+                        <p className="card-text">4.999/Mensuales</p>
                     </div>
                 </div>
             </div>
