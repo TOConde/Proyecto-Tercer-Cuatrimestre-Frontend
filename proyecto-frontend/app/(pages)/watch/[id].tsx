@@ -1,12 +1,13 @@
+'use client'
 import styles from './page.module.css';
 import { getMovieById } from '@/app/services/Peliculas';
-import { useRouter } from 'next/router';
+import { useParams } from 'next/navigation';
 
-const Watch = () => {
-  const router = useRouter();
-  const { id } = router.query;
+const Peliculas = () => {
+  const params = useParams<{ id: string }>()
+  const { id } = params;
 
-  const fetchMovieDetails = async () => {
+  /* const fetchMovieDetails = async () => {
     try {
       const movieDetails = await getMovieById(Number(id));
       console.log(movieDetails)
@@ -14,8 +15,9 @@ const Watch = () => {
       console.log('Error fetching movie details:', error);
     }
   }
-
   fetchMovieDetails();
+ */
+  console.log(params)
 
   return (
     <div className={styles.main}>
@@ -24,4 +26,4 @@ const Watch = () => {
   );
 };
 
-export default Watch;
+export default Peliculas;
