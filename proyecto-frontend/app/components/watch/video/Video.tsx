@@ -6,7 +6,7 @@ interface VideoProps {
 
 export const Video = ({ src }: VideoProps) => {
   return (
-    <div className='viceoConteiner'>
+    <div className='videoConteiner'>
       <iframe
         width="100%"
         height="100%"
