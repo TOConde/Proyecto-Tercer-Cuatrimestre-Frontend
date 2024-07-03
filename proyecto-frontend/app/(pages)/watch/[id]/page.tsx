@@ -3,6 +3,7 @@ import styles from './page.module.css';
 import { getMovieById } from '@/app/services/Peliculas';
 import { useParams } from 'next/navigation';
 
+
 const Peliculas = () => {
   const params = useParams<{ id: string }>()
   const { id } = params;
