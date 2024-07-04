@@ -1,13 +1,16 @@
 'use client'
-import { Video } from '@/app/components/watch/Video';
+
+import { Video } from '@/app/components/watch/video/Video';
+import { InfoMovie } from '@/app/components/watch/infoMovie/InfoMovie';
 import styles from './page.module.css';
 import { getMovieById } from '@/app/services/Peliculas';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Movie {
-  id: number;
-  title: string;
+  titulo: string;
+  sinopsis: string;
+  url_image: string;
   urlVideo: string;
 }
 
@@ -33,10 +36,15 @@ const Peliculas = () => {
     return <div className={styles.loading}>Pelicula no encontrada</div>;
   }
 
+  console.log(movie)
+
   return (
-    <div className={styles.main}>
-      <Video src={movie.urlVideo} />
-    </div>
+    <>
+      <main className={styles.main}>
+        <Video src={movie.urlVideo} />
+      </main>
+      <InfoMovie movieInfo={movie} />
+    </>
   );
 };
 
