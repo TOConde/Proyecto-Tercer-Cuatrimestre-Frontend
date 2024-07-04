@@ -16,9 +16,13 @@ export const InfoMovie = ({ movieInfo }: InfoMovieProps) => {
 
   return (
     <div className='infoMoviContainer'>
-      <TituloWatch titulo={titulo}/>   
-      <SinopsisWatch sinopsis={sinopsis}/>
-      <ImagenWatch url_image={url_image} />
+      <div className='infoTituloSinopContainer'>
+        <TituloWatch titulo={titulo} />
+        <SinopsisWatch sinopsis={sinopsis} />
+      </div>
+      <div className='infoImagenConteiner'>
+        <ImagenWatch url_image={url_image} />
+      </div>
     </div>
   );
 };

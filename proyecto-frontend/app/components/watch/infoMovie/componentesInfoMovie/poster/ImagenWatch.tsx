@@ -6,8 +6,8 @@ interface ImagenWatchProps {
 
 export const ImagenWatch = ({ url_image }: ImagenWatchProps) => {
   return (
-    <div className='tituloContainer'>
-      <img src={url_image} />
+    <div className='imagenContainer'>
+      <img className='imagenInfoWatch' src={url_image} />
     </div>
   );
 };
