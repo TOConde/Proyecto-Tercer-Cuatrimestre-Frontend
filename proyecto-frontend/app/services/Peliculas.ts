@@ -40,3 +40,13 @@ export const editMovie = async (id: number, pelicula: any) => {
     throw error;
   }
 }
+
+export const getMovieById = async (id: number): Promise<any> => {
+  try {
+    const response = await clienteAxios.get(`/peliculas/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log('Error fetching movie:', error);
+    throw error;
+  }
+}

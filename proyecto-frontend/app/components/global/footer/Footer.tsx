@@ -21,13 +21,13 @@ export const Footer = () => {
         </a>
       </ul>
       <div className='row conteinerSocials'>
-        <img className='socialImg' src="./img/footer/logosRedSocial/youtube.png" alt="youtube" />
-        <img className='socialImg' src="./img/footer/logosRedSocial/instagram.png" alt="instagram" />
-        <img className='socialImg' src="./img/footer/logosRedSocial/xtwitter.png" alt="twitter" />
+        <img className='socialImg' src="/img/footer/logosRedSocial/youtube.png" alt="youtube" />
+        <img className='socialImg' src="/img/footer/logosRedSocial/instagram.png" alt="instagram" />
+        <img className='socialImg' src="/img/footer/logosRedSocial/xtwitter.png" alt="twitter" />
       </div>
       <div className='containerGithub'>
         <a href="https://github.com/TOConde/Proyecto-Tercer-Cuatrimestre-Frontend" target="_blank">
-          <img className='githubImg' src="./img/footer/github.png" alt="github" />
+          <img className='githubImg' src="/img/footer/github.png" alt="github" />
         </a>
       </div>
     </footer>
