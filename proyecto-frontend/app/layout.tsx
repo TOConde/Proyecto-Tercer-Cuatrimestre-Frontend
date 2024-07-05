@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bodoni_Moda } from "next/font/google";
 import "./globals.css";
 import 'bootstrap/dist/css/bootstrap.css'
 import { Footer } from "./components/global/footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Flixorama",
@@ -21,7 +21,7 @@ export default function RootLayout({
       <head>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossOrigin="anonymous"></script>
       </head>
-      <body className={inter.className}>
+      <body className={font.className}>
         {children}
         <Footer />
       </body>
