@@ -1,8 +1,9 @@
 .infoMoviContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: flex-start;
 
-  padding: 60px 0;
+  padding: 60px 60px;
   border-bottom: solid 5px #343a40;
   background-color: black;
 }
@@ -11,8 +12,12 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  max-width: 50%;
 }
 
 .infoImagenConteiner {
   display: flex;
+  flex: 1;
+  justify-content: center;
+  max-width: 50%;
 }
