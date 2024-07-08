@@ -2,7 +2,7 @@
 
 import { withRoles } from '@/app/components/HOC/WithRoles';
 import { NavBarBrowse } from '../../components/browse/navBar/navBar';
-import styles from '../../page.module.css';
+import styles from './page.module.css';
 import { ListaPelis } from '@/app/components/browse/listaPelis/ListaPelis';
 import { BrowseIntro } from '@/app/components/browse/intro/BrowseIntro';
 

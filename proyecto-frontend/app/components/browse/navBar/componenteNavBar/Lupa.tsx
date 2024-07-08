@@ -1,14 +1,21 @@
-import { useState } from 'react';
 import './Lupa.css'
+import { useEffect, useRef, useState } from 'react';
 import { IoSearchSharp } from "react-icons/io5";
 
 export const NavBarLupa = () => {
   const [inputVisible, setInputVisible] = useState(false);
   const [searchWord, setSearchWord] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchClick = () => {
     setInputVisible(!inputVisible);
   }
+
+  useEffect(() => {
+    if (inputVisible && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputVisible])
 
   const handleSearchChange = (e: any) => {
     setSearchWord(e.target.value);
@@ -32,6 +39,7 @@ export const NavBarLupa = () => {
            onChange={handleSearchChange}
            placeholder='Busque una pelicula...'
            className='searchInput'
+           ref={inputRef}
           />
         </form>
       )}
