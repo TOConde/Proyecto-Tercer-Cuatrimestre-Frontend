@@ -1,9 +1,10 @@
 import './Lupa.css'
+import { IoSearchSharp } from "react-icons/io5";
 
 export const NavBarLupa = () => {
   return (
     <div className='containerLupa'>
-      <img src="/img/browse/iconSearchWhite.png" className='lupaImg' />
+      <IoSearchSharp className='lupaImg'/>
     </div>
   );
 }

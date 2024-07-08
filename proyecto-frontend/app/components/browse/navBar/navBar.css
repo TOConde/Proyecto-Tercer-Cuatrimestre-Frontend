@@ -6,3 +6,12 @@
   border-width: 5px;
   justify-content: space-between;
 }
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left > *:not(:last-child), .nav-right > *:not(:last-child) {
+  margin-right: 20px;
+}

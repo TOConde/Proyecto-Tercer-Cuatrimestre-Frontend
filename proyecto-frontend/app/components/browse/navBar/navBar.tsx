@@ -9,13 +9,13 @@ import { LogOutButton } from '../../global/logout/LogOut';
 export const NavBarBrowse = () => {
   return (
     <nav className='navBar d-flex fixed-top'> 
-      <div className='d-flex align-items-center'>
+      <div className='d-flex align-items-center nav-left'>
         <NavBarLogo />
         <NavBarExplorar />
         <NavBarNoticias />
-      </div>
-      <div className='d-flex align-items-center'>
         <NavBarLupa />
+      </div>
+      <div className='d-flex align-items-center nav-right'>        
         <LogOutButton />
         <NavBarUser />
       </div>
