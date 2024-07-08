@@ -24,7 +24,7 @@ export const NavBarLupa = () => {
   const handleSearchSubmit = (e: any) => {
     e.preventDefault();
     if (searchWord.trim() !== '') {
-      window.location.href = `/browse/search?queary${searchWord}`
+      window.location.href = `/browse/search?queary=${searchWord}`
     }
   }
 

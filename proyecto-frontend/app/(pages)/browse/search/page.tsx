@@ -9,13 +9,13 @@ import { NavBarBrowse } from '@/app/components/browse/navBar/navBar';
 const Search = () => {
   const params = useSearchParams();
 
-  const searchQuery = params.get('query') || '';
+  const searchQuery = params.get('queary') || '';
  
 
   return (
     <main className={styles.main}>
       <NavBarBrowse /><br />
-      <h1>Para la busqueda: "{params}"</h1>
+      <h1>Para la busqueda: "{searchQuery}"</h1>
       <h1>Encontramos las siguientes coincidencias</h1>
     </main>
   );
