@@ -10,7 +10,7 @@ function Subscriptions() {
   const [tipoDeSuscripcion, setTipoDeSuscripcion] = useState<number>(0);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUserData = async () => {
       try {
         const response = await getUserById();
         if (response.data) {
@@ -21,7 +21,7 @@ function Subscriptions() {
       }
     };
 
-    fetchData();
+    fetchUserData();
   }, []);
 
   const handleCardClick = (cardId: number) => {

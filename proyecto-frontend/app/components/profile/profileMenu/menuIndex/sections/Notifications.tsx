@@ -10,7 +10,7 @@ function Notifications() {
   const [switchNotificaciones, setSwitchNotificaciones] = useState<boolean>(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUserData = async () => {
       try {
         const response = await getUserById();
         if (response.data) {
@@ -22,7 +22,7 @@ function Notifications() {
       }
     };
 
-    fetchData();
+    fetchUserData();
   }, []);
 
   const handleSwitchChange = async () => {
