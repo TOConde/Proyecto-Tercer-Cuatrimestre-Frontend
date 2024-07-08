@@ -1,40 +1,68 @@
 'use client';
 
-import './ProfileImage.css'
-import React, { useState } from 'react';
+import './ProfileImage.css';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'react-bootstrap/Image';
+import { editUserImg, getUserById } from '@/app/services/User';
+import { FaEdit } from 'react-icons/fa';
 
-function ProfileImage() {
+const ProfileImage: React.FC = () => {
     const [img, setImg] = useState<string | null>(null);
-    const [fileName, setFileName] = useState('Formato .jpg/.jpeg/.png');
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    useEffect(() => {
+        const fetchUserImg = async () => {
+            try {
+                const response = await getUserById();
+                if (response.data) {
+                    setImg(response.data.urlUserImage);
+                }
+            } catch (e) {
+                console.error('Error al recuperar la imagen del usuario.', e);
+            }
+        };
+
+        fetchUserImg();
+    }, []);
+
+    const handleChangeImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
-            setImg(URL.createObjectURL(file));
-            setFileName(file.name);
+            const formData = new FormData();
+            formData.append('img', file);
+
+            try {
+                await editUserImg(formData);
+                setImg(URL.createObjectURL(file));
+            } catch (error) {
+                console.error('Error updating user image', error);
+            }
         }
     };
 
+    const handleClick = () => {
+        fileInputRef.current?.click();
+    };
+
     return (
-        <div className="profileImg" >
+        <div className="profileImg" onClick={handleClick}>
             <input
                 type="file"
                 accept="image/*"
-                id="upload"
                 style={{ display: 'none' }}
                 onChange={handleChangeImg}
+                ref={fileInputRef}
             />
-            <label htmlFor="upload">
-                <Image 
-                    className="userImg"
-                    src={img || "https://via.placeholder.com/150"} 
-                    roundedCircle 
-                    onClick={() => document.getElementById('upload')?.click()}
-                />
-            </label>
+            <Image
+                className="userImg"
+                src={img || "https://via.placeholder.com/150"}
+                roundedCircle
+            />
+            <div className="overlay">
+                <FaEdit className="editIcon" />
+            </div>
         </div>
     );
-}
+};
 
 export default ProfileImage;

@@ -55,6 +55,23 @@ export const editUserNotifications = async (body: { recibirCorreos: number }) =>
     }
 }
 
+export const editUserImg = async (body: FormData) => {
+    try {
+        if (usuarioID !== undefined) {
+            await clienteAxios.put(`/usuarios/image/${usuarioID}`, body, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+                });
+        } else {
+            throw new Error('Usuario ID no encontrado en el token');
+        }
+    } catch (e) {
+        console.error('No se pudo modificar su imagen de perfil', e);
+        throw e;
+    }
+}
+
 export const getUserById = async () => {
     try {
         if (usuarioID !== undefined) {

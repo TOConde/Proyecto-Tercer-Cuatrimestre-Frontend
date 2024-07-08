@@ -13,7 +13,7 @@ function Profile() {
     const [fechaSuscripcion, setFechaSuscripcion] = useState<string>('');
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchUserData = async () => {
             try {
                 const response = await getUserById();
                 if (response.data) {
@@ -29,7 +29,7 @@ function Profile() {
             }
         };
 
-        fetchData();
+        fetchUserData();
 
     }, []);
 
