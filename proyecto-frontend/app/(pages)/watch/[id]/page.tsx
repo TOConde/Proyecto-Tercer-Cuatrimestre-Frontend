@@ -6,6 +6,7 @@ import styles from './page.module.css';
 import { getMovieById } from '@/app/services/Peliculas';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { withRoles } from '@/app/components/HOC/WithRoles';
 
 interface Movie {
   titulo: string;
@@ -46,4 +47,4 @@ const Peliculas = () => {
   );
 };
 
-export default Peliculas;
+export default withRoles(Peliculas, ['USR', 'ADM'], '/');

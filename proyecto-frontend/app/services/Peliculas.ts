@@ -62,3 +62,15 @@ export const searchByTitle = async (title: string): Promise<any> => {
     throw error;
   }
 }
+
+export const getMovieByGenre = async (genre: string): Promise<any> => {
+  try {
+    const response = await clienteAxios.get(`/peliculas/genre/search`, {
+      params: { genre }
+    });
+    return response.data;
+  } catch (error) {
+    console.log('Error fetching movie:', error);
+    throw error;
+  }
+}

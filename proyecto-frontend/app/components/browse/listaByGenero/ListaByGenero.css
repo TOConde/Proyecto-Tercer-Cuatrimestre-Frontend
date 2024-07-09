@@ -8,7 +8,7 @@
   border-width: 5px;
 }
 
-.tituloListaRandom {
+.tituloLista {
   text-align: center;
   font-size: 36px;
   cursor: default;
@@ -25,14 +25,14 @@
   transform: scale(1.05);
 }
 
-.tituloPeliculaListaRandom {
+.tituloPeliculaLista {
   font-size: 20px;
   padding-top: 8px;
   color: #d9d946;
   transition: transform 0.2s ease-in-out;
 }
 
-.tituloPeliculaListaRandom:hover {
+.tituloPeliculaLista:hover {
   transform: scale(1.05);  
 }
 

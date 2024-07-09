@@ -1,5 +1,5 @@
-import './ListaPelis.css'
-import { getAllMovies } from '@/app/services/Peliculas';
+import './ListaByGenero.css'
+import { getAllMovies, getMovieByGenre } from '@/app/services/Peliculas';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -11,13 +11,18 @@ interface Movie {
   url_image_delete: string;
 }
 
-export const ListaPelis = () => {
+interface ListaParams {
+  titulo: string;
+  genero: string;
+}
+
+export const ListaByGenero = ({ titulo, genero }: ListaParams) => {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const allMovies = await getAllMovies();
+        const allMovies = await getMovieByGenre(genero);
         setMovies(randomizeArray(allMovies).slice(0, 5));
       } catch (error) {
         console.error('Error fetching movies:', error);
@@ -38,14 +43,14 @@ export const ListaPelis = () => {
   return (
     <div className="containerListaRecomen">
       <div>
-        <p className='tituloListaRandom'>Lista de Recomendación</p>
+        <p className='tituloLista'>{titulo}</p>
       </div>
       <div className="row">
         {movies.map((movie) => (
           <div className="col" key={movie.peliculaID}>
             <Link href={`watch/${movie.peliculaID}`}>
-              <img className='imgMovie' src={movie.url_image} />              
-              <div className='tituloPeliculaListaRandom'>{movie.titulo}</div>
+              <img className='imgMovie' src={movie.url_image} />
+              <div className='tituloPeliculaLista'>{movie.titulo}</div>
             </Link>
           </div>
         ))}
