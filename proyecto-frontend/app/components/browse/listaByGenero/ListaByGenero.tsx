@@ -43,14 +43,14 @@ export const ListaByGenero = ({ titulo, genero }: ListaParams) => {
   return (
     <div className="containerListaRecomen">
       <div>
-        <p>{titulo}</p>
+        <p className='tituloLista'>{titulo}</p>
       </div>
       <div className="row">
         {movies.map((movie) => (
           <div className="col" key={movie.peliculaID}>
             <Link href={`watch/${movie.peliculaID}`}>
               <img className='imgMovie' src={movie.url_image} />
-              <div className='tituloLista'>{movie.titulo}</div>
+              <div className='tituloPeliculaLista'>{movie.titulo}</div>
             </Link>
           </div>
         ))}
