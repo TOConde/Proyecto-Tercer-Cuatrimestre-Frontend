@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './PelisEncontradas.css';
 import { searchByTitle } from '@/app/services/Peliculas';
+import Link from 'next/link';
 
 interface TituloSearchProps {
   searchQuery: string;
@@ -34,13 +35,13 @@ const PelisEncontradas: React.FC<TituloSearchProps> = ({ searchQuery }) => {
 
   return (
     <div className='pelisEncontradasContainer'>
-      <div className="row">
-        {movies.map((movie) => (
-          <div className="col" key={movie.peliculaID}>
+      {movies.map((movie) => (
+        <div key={movie.peliculaID} className='pelisEncontradasItem'>
+          <Link href={`/watch/${movie.peliculaID}`}>
             <img className='imgMovie' src={movie.url_image} alt={movie.titulo} />
-          </div>
-        ))}
-      </div>
+          </Link>          
+        </div>
+      ))}
     </div>
   );
 }
