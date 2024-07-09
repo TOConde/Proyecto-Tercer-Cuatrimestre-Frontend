@@ -10,7 +10,6 @@ import PelisEncontradas from '@/app/components/browse/search/pelisEncontradas/Pe
 
 const Search = () => {
   const params = useSearchParams();
-
   const searchQuery = params.get('queary') || ''; 
 
   return (
