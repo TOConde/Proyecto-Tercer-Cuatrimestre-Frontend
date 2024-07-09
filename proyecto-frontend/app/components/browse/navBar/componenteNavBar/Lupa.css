@@ -5,6 +5,7 @@
 .lupaImg {
   font-size: 25px;
   color: white;
+  cursor: pointer;
 }
 
 .searchInput {
