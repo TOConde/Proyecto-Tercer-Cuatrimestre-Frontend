@@ -9,6 +9,26 @@
 }
 
 .imgMovie {
+  width: 100%;
   border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.imgMovie:hover {
+  transform: scale(1.05);
+}
+
+.tituloLista {
+  padding-top: 8px;
+  color: #d9d946;
+  transition: transform 0.2s ease-in-out;
+}
+
+.tituloLista:hover {
+  transform: scale(1.05);  
+}
+
+.col a {
+  text-decoration: none;
 }

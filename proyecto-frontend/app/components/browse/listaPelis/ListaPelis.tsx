@@ -44,7 +44,8 @@ export const ListaPelis = () => {
         {movies.map((movie) => (
           <div className="col" key={movie.peliculaID}>
             <Link href={`watch/${movie.peliculaID}`}>
-              <img className='imgMovie' src={movie.url_image} />
+              <img className='imgMovie' src={movie.url_image} />              
+              <div className='tituloLista'>{movie.titulo}</div>
             </Link>
           </div>
         ))}

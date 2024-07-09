@@ -39,6 +39,7 @@ const PelisEncontradas: React.FC<TituloSearchProps> = ({ searchQuery }) => {
         <div key={movie.peliculaID} className='pelisEncontradasItem'>
           <Link href={`/watch/${movie.peliculaID}`}>
             <img className='imgMovie' src={movie.url_image} alt={movie.titulo} />
+            <div className='tituloListaEncontrada'>{movie.titulo}</div>
           </Link>          
         </div>
       ))}
