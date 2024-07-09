@@ -50,3 +50,15 @@ export const getMovieById = async (id: number): Promise<any> => {
     throw error;
   }
 }
+
+export const searchByTitle = async (title: string): Promise<any> => {
+  try {
+    const response = await clienteAxios.get(`/peliculas/title/search`, {
+      params: { title }
+    });
+    return response.data;
+  } catch (error) {
+    console.log('Error fetching movie:', error);
+    throw error;
+  }
+}
