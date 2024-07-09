@@ -1,0 +1,25 @@
+.pelisEncontradasContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  width: 100%
+}
+
+.pelisEncontradasItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgMovie {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.imgMovie:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
