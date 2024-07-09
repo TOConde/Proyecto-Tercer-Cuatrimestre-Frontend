@@ -36,8 +36,6 @@ const Peliculas = () => {
     return <div className={styles.loading}>Pelicula no encontrada</div>;
   }
 
-  console.log(movie)
-
   return (
     <>
       <main className={styles.main}>
