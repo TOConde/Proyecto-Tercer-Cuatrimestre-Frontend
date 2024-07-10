@@ -112,8 +112,8 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
       <FloatingLabel controlId="floatingVideoURL" label="Enlace al Video" className="formAdmLabel">
         <Form.Control type="text" placeholder="Enlace al Video" className="containerFormInput" value={video} onChange={handleChangeVideo} />
       </FloatingLabel>
-      <Form.Group controlId="formGeneros" className='formAdmLabel'>
-        <Form.Label>Géneros</Form.Label>
+      <Form.Group controlId="formGeneros" className='formAdmLabel containerGenero'>
+        <Form.Label className='generosTitulo'>Géneros</Form.Label>
         <Row>
           {generos.map((genero: any) => (
             <Col key={genero.generoID} xs={6}>
