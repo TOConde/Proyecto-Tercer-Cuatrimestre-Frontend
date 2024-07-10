@@ -115,6 +115,7 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
                       label={genero.nombreGenero}
                       onChange={() => handleSelectGenero(genero.generoID)}
                       checked={selectedGeneros.includes(genero.generoID)}
+                      disabled={selectedGeneros.length === 1 && selectedGeneros.includes(genero.generoID)}
                     />
                   </Col>
                 ))}
