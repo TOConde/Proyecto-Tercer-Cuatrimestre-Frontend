@@ -1,5 +1,5 @@
 import './LoginButton.css'
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { getInformacionUsuario, loginUser } from '@/app/services/Login';
@@ -7,11 +7,8 @@ import { useRouter } from 'next/navigation';
 
 
 function LoginButton() {
-
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,6 +21,16 @@ function LoginButton() {
   const handleChangePassword = (e: any) => {
     setPassword(e.target.value);
   };
+
+  const handleShowClick = () => {
+    setShow(!show);
+  }
+
+  useEffect(() => {
+    if (show && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [show])
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -45,11 +52,11 @@ function LoginButton() {
 
   return (
     <>
-      <Button variant="primary" className='btn buttonLogin' onClick={handleShow}>
+      <Button variant="primary" className='btn buttonLogin' onClick={handleShowClick}>
         Login
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleShowClick}>
         <Modal.Header closeButton className='containerFormLogin'>
           <Modal.Title>Iniciar sesion en Flixorama</Modal.Title>
         </Modal.Header>
@@ -57,11 +64,11 @@ function LoginButton() {
           <form role="form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="usrname"><span className="glyphicon glyphicon-user"></span>Email</label>
-              <input type="text" className="form-control" id="usrname" placeholder="Enter email" value={email} onChange={handleChangeEmail} />
+              <input type="text" className="form-control inputLogin" id="usrname" placeholder="Enter email" value={email} ref={inputRef} onChange={handleChangeEmail} />
             </div>
             <div className="form-group">
               <label htmlFor="psw"><span className="glyphicon glyphicon-eye-open"></span>Password</label>
-              <input type="password" className="form-control" id="psw" placeholder="Enter password" value={password} onChange={handleChangePassword} />
+              <input type="password" className="form-control inputLogin" id="psw" placeholder="Enter password" value={password} onChange={handleChangePassword} />
             </div>
             <button type="submit" className="btn btnLoginForm btn-success btn-block"><span className="glyphicon glyphicon-off"></span>Login</button>
           </form>
