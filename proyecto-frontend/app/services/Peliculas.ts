@@ -74,3 +74,13 @@ export const getMovieByGenre = async (genre: string): Promise<any> => {
     throw error;
   }
 }
+
+export const getGenerosById = async (id: number): Promise<any> => {
+  try {
+    const response = await clienteAxios.get(`/pelicula/generos/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log('Error fetching movie:', error);
+    throw error;
+  }
+}
