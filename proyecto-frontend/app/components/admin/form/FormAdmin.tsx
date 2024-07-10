@@ -53,7 +53,7 @@ export const FormAdmin = ({ actualizarPeliculas }: { actualizarPeliculas: () => 
     setSelectedGeneros((prev) =>
       prev.includes(generoID) ? prev.filter(id => id !== generoID) : [...prev, generoID]
     );
-  }; //
+  };
 
   const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
