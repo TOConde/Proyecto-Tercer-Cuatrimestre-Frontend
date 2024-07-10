@@ -57,7 +57,7 @@ function LoginButton() {
       </Button>
 
       <Modal show={show} onHide={handleShowClick}>
-        <Modal.Header closeButton className='containerFormLogin'>
+        <Modal.Header className='containerFormLogin'>
           <Modal.Title>Iniciar sesion en Flixorama</Modal.Title>
         </Modal.Header>
         <Modal.Body className='containerFormLogin'>

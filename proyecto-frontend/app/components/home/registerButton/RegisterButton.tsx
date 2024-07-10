@@ -51,7 +51,7 @@ function RegisterButton() {
             </Button>
 
             <Modal show={show} onHide={handleShowClick}>
-                <Modal.Header closeButton className='containerFormRegister'>
+                <Modal.Header className='containerFormRegister'>
                     <Modal.Title>Regístrese en Flixorama:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='containerFormRegister'>
