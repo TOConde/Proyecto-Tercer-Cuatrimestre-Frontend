@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import './PelisEncontradas.css';
-import { searchByTitle } from '@/app/services/Peliculas';
+import { getMovieByGenre, searchByTitle } from '@/app/services/Peliculas';
 import Link from 'next/link';
-
-interface TituloSearchProps {
-  searchQuery: string;
-}
+import { useSearchParams } from 'next/navigation';
 
 interface Movie {
   peliculaID: number;
@@ -15,23 +12,31 @@ interface Movie {
   url_image_delete: string;
 }
 
-const PelisEncontradas: React.FC<TituloSearchProps> = ({ searchQuery }) => {
-  const [movies, setMovies] =useState<Movie[]>([]);
+const PelisEncontradas: React.FC = () => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const params = useSearchParams();
+  const searchQuery = params.get('queary') || '';
+  const genreQuery = params.get('genre') || '';
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const pelisEncontradas = await searchByTitle(searchQuery);
+        let pelisEncontradas: Movie[] = [];
+
+        if (searchQuery) {
+          pelisEncontradas = await searchByTitle(searchQuery);
+        } else if (genreQuery) {
+          pelisEncontradas = await getMovieByGenre(genreQuery);
+        }
+
         setMovies(pelisEncontradas);
-      }catch (error) {
+      } catch (error) {
         console.error('Error encontrando peliculas:', error)
-      }      
+      }
     }
 
-    if (searchQuery) {
-      fetchMovies();
-    }
-  }, [searchQuery])
+    fetchMovies();
+  }, [searchQuery, genreQuery])
 
   return (
     <div className='pelisEncontradasContainer'>
@@ -40,7 +45,7 @@ const PelisEncontradas: React.FC<TituloSearchProps> = ({ searchQuery }) => {
           <Link href={`/watch/${movie.peliculaID}`}>
             <img className='imgMovie' src={movie.url_image} alt={movie.titulo} />
             <div className='tituloListaEncontrada'>{movie.titulo}</div>
-          </Link>          
+          </Link>
         </div>
       ))}
     </div>

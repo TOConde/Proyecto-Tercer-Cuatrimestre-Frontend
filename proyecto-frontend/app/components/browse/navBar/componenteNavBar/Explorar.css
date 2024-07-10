@@ -13,7 +13,10 @@
   border-color: slategray;
 }
 
-.btnExplorar:checked + .btnExplorar, :not(.btnExplorar) + .btnExplorar:active, .btnExplorar:first-child:active, .btnExplorar.active, .btnExplorar.show {
+.btnExplorar:checked + .btnExplorar,
+:not(.btnExplorar) + .btnExplorar:active, 
+.btnExplorar:first-child:active, 
+.btnExplorar.active, .btnExplorar.show {
   background-color: rgb(20, 20, 20);
   border-color: slategray;
 }
@@ -25,9 +28,14 @@
 
 .dropItem {
   color: white;
+  text-align: center;
 }
 
 .dropItem:hover {
   color: white;
   background-color: rgb(20, 20, 20);
+}
+
+.rowExplorarMenu {
+  flex-wrap: nowrap;
 }
