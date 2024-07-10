@@ -1,4 +1,8 @@
 import './Footer.css'
+import { IoLogoYoutube } from "react-icons/io";
+import { FaInstagramSquare } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 
 export const Footer = () => {
   return (
@@ -20,14 +24,14 @@ export const Footer = () => {
           <button type="button" className="btn buttonFooter">AYUDA</button>
         </a>
       </ul>
-      <div className='row conteinerSocials'>
-        <img className='socialImg' src="/img/footer/logosRedSocial/youtube.png" alt="youtube" />
-        <img className='socialImg' src="/img/footer/logosRedSocial/instagram.png" alt="instagram" />
-        <img className='socialImg' src="/img/footer/logosRedSocial/xtwitter.png" alt="twitter" />
+      <div className='conteinerSocials'>
+        <IoLogoYoutube className='socialImg'/>
+        <FaInstagramSquare className='socialImg' />
+        <FaSquareXTwitter className='socialImg'/>
       </div>
       <div className='containerGithub'>
         <a href="https://github.com/TOConde/Proyecto-Tercer-Cuatrimestre-Frontend" target="_blank">
-          <img className='githubImg' src="/img/footer/github.png" alt="github" />
+          <FaGithub className='githubImg'/>
         </a>
       </div>
     </footer>
