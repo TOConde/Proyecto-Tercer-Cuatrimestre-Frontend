@@ -18,3 +18,27 @@
   border: solid 1px black;
   color: black;
 }
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: black;
+  background-color: #d9d946;
+  border-color: #d9d946;
+}
+
+.nav-tabs .nav-link {
+  font-weight: bold;
+  margin-bottom: calc(-1* var(--bs-nav-tabs-border-width));
+  border-top-left-radius: var(--bs-nav-tabs-border-radius);
+  border-top-right-radius: var(--bs-nav-tabs-border-radius);
+  color: #d9d946;
+}
+
+.nav-tabs .nav-link:hover{
+  color: black;
+  background-color: #d9d946;
+  border-color: #d9d946;
+}
+
+.nav-tabs {
+  border-bottom: var(--bs-nav-tabs-border-width) solid #d9d946;
+}
