@@ -14,7 +14,7 @@ interface EditPeliculaModalProps {
 
 const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose, pelicula, actualizarPeliculas }) => {
   const [updatedPelicula, setUpdatedPelicula] = useState<Pelicula>(pelicula);
-  const [generos, setGeneros] = useState([]);
+  const [generos, setGeneros] = useState<any[]>([]);
   const [selectedGeneros, setSelectedGeneros] = useState<number[]>([]);
 
   useEffect(() => {
@@ -63,6 +63,7 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
       const updatedDate = {
         ...updatedPelicula,
         fechaEstreno: new Date(updatedPelicula.fechaEstreno).toISOString().split('T')[0], //para convertir fecha a yyyy-mm-dd, y lo pueda cargar en la base datos
+        generos: selectedGeneros
       }
 
       await editMovie(updatedPelicula.peliculaID, updatedDate);
