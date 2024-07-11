@@ -1,9 +1,10 @@
 'use client'
+
 import { useState } from 'react';
 import './TablaPelicula.css';
 import { FormControl, InputGroup, Pagination, Table } from 'react-bootstrap';
 import { FaEdit, FaSearch, FaTrash } from 'react-icons/fa';
-import { deleteMovies } from '@/app/services/Peliculas';
+import { deleteMovies, getGenerosById } from '@/app/services/Peliculas';
 import EditPeliculaModal from '../editPeliculaModal/EditPeliculaModal';
 
 export interface Pelicula {
@@ -12,6 +13,7 @@ export interface Pelicula {
   sinopsis: string;
   fechaEstreno: string;
   duracion: number;
+  generos: string[];
   urlVideo: string;
   url_image: string;
   url_image_delete: string;
@@ -28,7 +30,7 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
   const [selectedPelicula, setSelectedPelicula] = useState<Pelicula | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const peliculasPerPage = 5;
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
   const filteredPeliculas = peliculas.filter(pelicula =>
     pelicula.titulo.toLowerCase().includes(search.toLowerCase())
@@ -96,7 +98,8 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
               <th>Título</th>
               <th>Sinopsis</th>
               <th>Fecha de Estreno</th>
-              <th>Duración(min.)</th>
+              <th>Duración (min.)</th>
+              <th>Generos</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -107,6 +110,7 @@ const TablaPelicula: React.FC<TablaPeliculaProps> = ({ peliculas, actualizarPeli
                 <td>{pelicula.sinopsis}</td>
                 <td>{new Date(pelicula.fechaEstreno).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })}</td>
                 <td>{pelicula.duracion}</td>
+                <td>{pelicula.generos.join(', ')}</td>
                 <td>
                   <FaEdit onClick={() => handleShowModal(pelicula)} className='editIconTabla' />
                   <FaTrash onClick={() => handleDelete(pelicula.peliculaID)} className='deleteIconTabla' />
