@@ -55,7 +55,7 @@ const ProfileImage: React.FC = () => {
             />
             <Image
                 className="userImg"
-                src={img || "https://via.placeholder.com/150"}
+                src={img || "https://i.ibb.co/93v318Y/profile-Holder.jpg"}
                 roundedCircle
             />
             <div className="overlay">

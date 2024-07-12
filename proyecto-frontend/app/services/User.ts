@@ -81,6 +81,15 @@ export const editUserPassword = async (body: { password: string}): Promise<boole
     }
 }
 
+export const editUserEmail = async (body: { email: string }): Promise<boolean> => {
+    try {
+        const response = await clienteAxios.put(`/usuarios/email/${usuarioID}`, body)
+        return response.data
+    } catch (e) {
+        throw e;
+    }
+}
+
 export const verificarUserPassword = async (body: { password: string }): Promise<boolean> => {
     try {
         const response = await clienteAxios.post(`/usuarios/verification/${usuarioID}`, body);
