@@ -5,4 +5,5 @@
     border-color: #343a40;
     border-width: 5px;
     position: relative;
+    object-fit: scale-down;
 }
