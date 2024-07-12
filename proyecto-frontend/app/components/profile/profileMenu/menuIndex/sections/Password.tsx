@@ -3,18 +3,39 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Password.css';
+import { editUserPassword, verificarUserPassword } from '@/app/services/User';
 
 function ChangePassword() {
-  const [currentPassword, setCurrentPassword] = useState('');
+  const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
-  const handleChangePassword = () => {
+  const handleChangePassword = async () => {
     if (newPassword !== confirmNewPassword) {
       alert("Las contraseñas no coinciden");
       return;
+    } else {
+      const user = {
+        password
+      }
+
+      const passwordVerificada = await verificarUserPassword(user);
+
+      if (passwordVerificada) {
+        const userNewPassword = {
+          password: newPassword
+        }
+        const cambioExitoso = await editUserPassword(userNewPassword);
+        if (cambioExitoso) {
+          alert("Se ha cambiado su contraseña");
+        } else {
+          alert("Error al cambiar su contraseña");
+        }
+      } else {
+        alert("Contraseña invalida")
+      }
     }
-    alert("Contraseña cambiada exitosamente");
+    
   };
 
   return (
@@ -29,8 +50,8 @@ function ChangePassword() {
           <Form.Control
             type="password"
             placeholder="Ingresa tu contraseña actual"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
         <Form.Group className="change-password-form-group">

@@ -72,6 +72,29 @@ export const editUserImg = async (body: FormData) => {
     }
 }
 
+export const editUserPassword = async (body: { password: string}): Promise<boolean> => {
+    try {
+        const response = await clienteAxios.put(`/usuarios/password/${usuarioID}`, body);
+        return response.data;
+    } catch (e) {
+        throw e;
+    }
+}
+
+export const verificarUserPassword = async (body: { password: string }): Promise<boolean> => {
+    try {
+        const response = await clienteAxios.post(`/usuarios/verification/${usuarioID}`, body);
+        if (response.data) {
+            return true;
+        } else {
+            return false;
+        }
+      } catch (e) {
+        throw new Error('No se pudo modificar su contraseña.')
+      }
+}
+
+
 export const getUserById = async () => {
     try {
         if (usuarioID !== undefined) {
