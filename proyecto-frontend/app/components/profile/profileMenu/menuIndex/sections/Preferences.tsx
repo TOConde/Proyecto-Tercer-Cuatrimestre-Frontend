@@ -5,10 +5,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import './Preferences.css';
+import { Col, Row } from 'react-bootstrap';
+import { editUserPreferences, getUserById, getUserGeneros } from '@/app/services/User';
 
 function Preferences() {
     const [generos, setGeneros] = useState([]);
     const [selectedGeneros, setSelectedGeneros] = useState<number[]>([]);
+    const [idioma, setIdioma] = useState<string>('');
 
     useEffect(() => {
         const fetchGeneros = async () => {
@@ -20,51 +23,86 @@ function Preferences() {
             }
         };
 
+        const fetchUserData = async () => {
+            try {
+                const response = await getUserById();
+                if (response.data) {
+                    setIdioma(response.data.idioma);
+                }
+                const userGeneros = await getUserGeneros();
+                if (userGeneros.data) {
+                    setSelectedGeneros(userGeneros.data.map((g: any) => g.generoID));
+                }
+            } catch (error) {
+                console.error('Error para recuperar la informacion del usuario.', error);
+            }
+        };
+
         fetchGeneros();
+        fetchUserData();
     }, []);
 
-    const handleSelectGenero = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const options = Array.from(e.target.options);
-        const selected: number[] = [];
-        options.forEach((option) => {
-            if (option.selected) {
-                selected.push(Number(option.value));
-            }
+    const handleSelectGenero = (generoID: number) => {
+        setSelectedGeneros((prev) => {
+          if (prev.includes(generoID)) {
+            return prev.filter(id => id !== generoID);
+          } else {
+            return [...prev, generoID];
+          }
         });
-        setSelectedGeneros(selected);
-    };
+      };
+
+    const handleChangeIdioma = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setIdioma(e.target.value);
+    }
+
+    const handleChangePreferences = async () => {
+        const user = {
+            idioma,
+            generos: selectedGeneros
+        }
+
+        const cambioExitoso = await editUserPreferences(user);
+        if (cambioExitoso) {
+          alert("Se han cambiado sus preferencias");
+        } else {
+          alert("Error al cambiar sus preferencias");
+        }
+    }
 
     return (
         <Card className="preferences-card">
             <Card.Body className="preferences-card-body">
                 <Card.Title className="preferences-card-title">Preferencias</Card.Title>
                 <Card.Text className="preferences-card-text">
-                    Seleccione sus gustos y preferencias de idioma
+                    Seleccione su idioma de preferencia y sus gustos:
                 </Card.Text>
+                <Form.Group controlId="formIdioma" className="preferences-form-group">
+                    <Form.Label>Idioma</Form.Label>
+                    <Form.Select as="select" className="form-control" value={idioma} onChange={handleChangeIdioma}>
+                        <option value=""></option>
+                        <option value="Español">Español</option>
+                        <option value="Portugues">Portugues</option>
+                        <option value="Inglés">Inglés</option>
+                    </Form.Select>
+                </Form.Group>
                 <Form>
-                    <Form.Group className="preferences-form-group">
-                        <Form.Label>Seleccione sus gustos</Form.Label>
-                        <FloatingLabel controlId="floatingGeneros" label="Géneros" className="preferences-floating-label">
-                            <Form.Select multiple className="preferences-form-select" onChange={handleSelectGenero}>
-                                {generos.map((genero: any) => (
-                                    <option key={genero.generoID} value={genero.generoID}>
-                                        {genero.nombreGenero}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                        </FloatingLabel>
+                    <Form.Group controlId="formGeneros" className='formAdmLabel containerGenero'>
+                        <Row>
+                            {generos.map((genero: any) => (
+                                <Col key={genero.generoID} xs={6}>
+                                    <Form.Check
+                                        type="checkbox"
+                                        id={`genero-${genero.generoID}`}
+                                        label={genero.nombreGenero}
+                                        onChange={() => handleSelectGenero(genero.generoID)}
+                                        checked={selectedGeneros.includes(genero.generoID)}
+                                    />
+                                </Col>
+                            ))}
+                        </Row>
                     </Form.Group>
-
-                    <Form.Group controlId="formIdioma" className="preferences-form-group">
-                        <Form.Label>Idioma de preferencia</Form.Label>
-                        <Form.Control as="select">
-                            <option>Español</option>
-                            <option>Portugues</option>
-                            <option>Ingles</option>
-                        </Form.Control>
-                    </Form.Group>
-
-                    <Button variant="primary" type="submit" className="preferences-button">
+                    <Button variant="primary" onClick={handleChangePreferences} className="preferences-button">
                         Editar
                     </Button>
                 </Form>
