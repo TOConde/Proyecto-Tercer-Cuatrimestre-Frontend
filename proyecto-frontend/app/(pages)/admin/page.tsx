@@ -7,6 +7,7 @@ import TablaPelicula, { Pelicula } from '@/app/components/admin/tablaPelicula/Ta
 import { TituloAdmin } from '@/app/components/admin/titulo/Titulo'
 import { getAllMovies, getGenerosById } from '@/app/services/Peliculas';
 import { useEffect, useState } from 'react';
+import { Tab, Tabs } from 'react-bootstrap';
 
 const Page = () => {
     const [peliculas, setPeliculas] = useState<Pelicula[]>([]);
@@ -34,9 +35,15 @@ const Page = () => {
     return (
         <div className={styles.main}>
             <TituloAdmin />
-            <FormAdmin actualizarPeliculas={actualizarPeliculas} />
-            <TablaPelicula peliculas={peliculas} actualizarPeliculas={actualizarPeliculas} />
-            <GenerarReporte />
+            <Tabs className={styles.tabAdm} defaultActiveKey="infoPeliculas" id="uncontrolled-tab-example">
+                <Tab eventKey="infoPeliculas" title="Agregar/Modificar peliculas">
+                    <FormAdmin actualizarPeliculas={actualizarPeliculas} />
+                    <TablaPelicula peliculas={peliculas} actualizarPeliculas={actualizarPeliculas} />
+                </Tab>
+                <Tab eventKey="Reporte" title="Reporte">
+                    <GenerarReporte />
+                </Tab>
+            </Tabs>
         </div>
     )
 }

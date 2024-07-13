@@ -2,3 +2,10 @@
   min-height: 100vh;
   background-color: black;
 }
+
+.tabAdm {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 40px;
+}

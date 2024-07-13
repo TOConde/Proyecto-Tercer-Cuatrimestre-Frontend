@@ -80,7 +80,7 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
         <Modal.Title>Editando película: {pelicula.titulo}</Modal.Title>
       </Modal.Header>
       <Modal.Body className='containerFormEditMovie'>
-        <Tabs defaultActiveKey="Info Pelicula" id="uncontrolled-tab-example" className="mb-3">
+        <Tabs defaultActiveKey="Info Pelicula" id="uncontrolled-tab-example" className="mb-3 edit-pelicula-tabs">
           <Tab eventKey="Info Pelicula" title="Info Pelicula">
             <Form>
               <Form.Group controlId="formTitulo">
