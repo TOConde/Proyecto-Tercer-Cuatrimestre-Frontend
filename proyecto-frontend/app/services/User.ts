@@ -72,6 +72,15 @@ export const editUserImg = async (body: FormData) => {
     }
 }
 
+export const editUserPreferences = async (body: { idioma: string, generos: number[]}) => {
+    try {
+        const response = await clienteAxios.put(`/usuarios/preferences/${usuarioID}`, body);
+        return response.data;
+    } catch (e) {
+        throw e;
+    }
+}
+
 export const editUserPassword = async (body: { password: string}): Promise<boolean> => {
     try {
         const response = await clienteAxios.put(`/usuarios/password/${usuarioID}`, body);
@@ -108,6 +117,20 @@ export const getUserById = async () => {
     try {
         if (usuarioID !== undefined) {
             const response = await clienteAxios.get(`/usuarios/info/${usuarioID}`);
+            return response;
+        } else {
+            throw new Error('Usuario ID no encontrado en el token.');
+        }
+    } catch (e) {
+        console.error('Error en el backend', e);
+        throw e;
+    }
+}
+
+export const getUserGeneros = async () => {
+    try{
+        if (usuarioID !== undefined) {
+            const response = await clienteAxios.get(`/usuarios/generos/${usuarioID}`);
             return response;
         } else {
             throw new Error('Usuario ID no encontrado en el token.');
