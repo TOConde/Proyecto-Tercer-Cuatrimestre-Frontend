@@ -84,3 +84,13 @@ export const getGenerosById = async (id: number): Promise<any> => {
     throw error;
   }
 }
+
+export const getReportUser = async (): Promise<any> => {
+  try {
+    const response = await clienteAxios.get(`/reporte/usuarios/`);
+    return response.data;
+  } catch (error) {
+    console.log('Error fetching movie:', error);
+    throw error;
+  }
+}

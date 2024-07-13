@@ -2,6 +2,7 @@
 import styles from './page.module.css';
 import { withRoles } from '@/app/components/HOC/WithRoles'
 import { FormAdmin } from '@/app/components/admin/form/FormAdmin'
+import { GenerarReporte } from '@/app/components/admin/generarReporte/GenerarReporte';
 import TablaPelicula, { Pelicula } from '@/app/components/admin/tablaPelicula/TablaPelicula';
 import { TituloAdmin } from '@/app/components/admin/titulo/Titulo'
 import { getAllMovies, getGenerosById } from '@/app/services/Peliculas';
@@ -35,6 +36,7 @@ const Page = () => {
             <TituloAdmin />
             <FormAdmin actualizarPeliculas={actualizarPeliculas} />
             <TablaPelicula peliculas={peliculas} actualizarPeliculas={actualizarPeliculas} />
+            <GenerarReporte />
         </div>
     )
 }
