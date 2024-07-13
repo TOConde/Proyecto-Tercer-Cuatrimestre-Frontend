@@ -50,11 +50,11 @@ export const GenerarReporte = () => {
       
       let y = 70;
       reporte.suscripcionesMes.forEach((mes, index) => {
-        const posY = y + (index * 10); // Ajustar la posición vertical
+        const posY = y + (index * 10);
         doc.text(`${mes.Anio}: ${mes.CantidadUsuariosRegistrados} suscriptores`, 20, posY);
       });
   
-      const posYSuscripciones = y + (reporte.suscripcionesMes.length * 10) + 10; // Posición vertical para la sección de suscripciones
+      const posYSuscripciones = y + (reporte.suscripcionesMes.length * 10) + 10;
       doc.text('Cantidad de Suscripciones:', 20, posYSuscripciones);
       doc.text(`Usuarios Free: ${reporte.cantidadSuscripciones.cantidadUsuarioFree}`, 20, posYSuscripciones + 10);
       doc.text(`Usuarios Premium: ${reporte.cantidadSuscripciones.cantidadUsuarioPremium}`, 20, posYSuscripciones + 20);
@@ -71,11 +71,12 @@ export const GenerarReporte = () => {
     <div className='reporteContainer'>
       {reporte ? (
         <div className='reporteDatos'>
-          <p>Reporte</p>
+          <p className='reporteTitulo'>Reporte</p>
           <p>Cantidad de Usuarios Activos: {reporte.cantidadUsersActivos}</p>
           <p>Promedio de Edad: {Number(reporte.promedioEdad).toFixed(2)}</p>
           <p>País más Popular: {reporte.paisPopular.pais} ({reporte.paisPopular.cantidad} usuarios)</p>
-          <p>Suscripciones por Mes(ultimos 12): </p>
+
+          <p className='suscripcionesMes'>Suscripciones por Mes(ultimos 12): </p>
           <ul>
             {reporte.suscripcionesMes.map((mes, index) => (
               <li key={index}>Mes {index + 1}: {mes.mes} ({mes.CantidadUsuariosRegistrados} suscripciones)</li>
@@ -88,7 +89,7 @@ export const GenerarReporte = () => {
       ) : (
         <p>Cargando reporte...</p>
       )}
-      <button className='buttonReporte' onClick={generarPDF}>Generar PDF</button>
+      <button type='button' className='btn btn-primary buttonReporte' onClick={generarPDF}>Generar PDF</button>
     </div>
   );
 }
