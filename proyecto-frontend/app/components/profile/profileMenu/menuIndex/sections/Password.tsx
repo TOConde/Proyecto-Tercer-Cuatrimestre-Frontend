@@ -64,7 +64,7 @@ function ChangePassword() {
             minLength={6}
             required
           />
-          <Form.Text className="text-muted">
+          <Form.Text className="text-password">
             Mínimo 6 caracteres
           </Form.Text>
         </Form.Group>

@@ -101,7 +101,7 @@ function ChangeEmail() {
           </Button>
         </Form>
         <Card.Text className="change-email-support">
-          ¿Tienes problemas? Ponte en contacto con nosotros en <Card.Link href="#">Soporte al cliente</Card.Link>.
+          ¿Tienes problemas? Ponte en contacto con nosotros en <Card.Link href="#">Soporte al cliente.</Card.Link>
         </Card.Text>
       </Card.Body>
     </Card>

@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 50;
 }
 
 .userImg {
@@ -27,7 +28,6 @@
     height: 100%;
 }
 
-
 .overlay {
     position: absolute;
     top: 0;
@@ -39,12 +39,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0; 
-    transition: opacity 0.3s ease; 
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .overlay:hover {
-    opacity: 1; 
+    opacity: 1;
 }
 
 .editIcon {

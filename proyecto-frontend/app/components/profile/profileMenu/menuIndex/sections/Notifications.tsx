@@ -43,7 +43,7 @@ function Notifications() {
         <Card.Title className="notifications-card-title">Notificaciones</Card.Title>
         <Form>
           <Form.Group controlId="formPais" className="notifications-form-group">
-            <Form.Label>Idioma de los correos</Form.Label>
+            <Form.Label className="notifications-form-label">Idioma de los correos</Form.Label>
             <Form.Select className="notifications-form-select">
               <option>Español</option>
               <option>Portugués</option>
