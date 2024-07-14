@@ -85,7 +85,7 @@ function ChangeEmail() {
               name="new-email"
               value={newEmail}
               onChange={handleChangeEmail}
-              isInvalid={!emailValid} // Aplicar estilo de validación incorrecta si emailValid es false
+              isInvalid={!emailValid}
               placeholder="Introduce el nuevo correo"
               required
             />
