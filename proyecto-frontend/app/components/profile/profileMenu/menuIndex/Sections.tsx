@@ -14,17 +14,17 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({ activeSection }) => {
   switch (activeSection) {
     case 'perfil':
-      return <div><Profile /></div>;
+      return <Profile />;
     case 'preferencias':
-      return <div><Preferences /></div>;
+      return <Preferences />;
     case 'suscripcion':
-      return <div><Subscriptions /></div>;
+      return <Subscriptions />;
     case 'notificaciones':
-      return <div><Notifications /></div>;
+      return <Notifications />;
     case 'email':
-      return <div><Email /></div>;
+      return <Email />;
     case 'password':
-      return <div><Password /></div>;
+      return <Password />;
     default:
       return null;
   }
