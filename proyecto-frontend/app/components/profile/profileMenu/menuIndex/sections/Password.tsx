@@ -32,7 +32,7 @@ function ChangePassword() {
           alert("Error al cambiar su contraseña");
         }
       } else {
-        alert("Contraseña invalida")
+        alert("Contraseña inválida")
       }
     }
     
@@ -61,7 +61,12 @@ function ChangePassword() {
             placeholder="Ingresa tu nueva contraseña"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
+            minLength={6}
+            required
           />
+          <Form.Text className="text-muted">
+            Mínimo 6 caracteres
+          </Form.Text>
         </Form.Group>
         <Form.Group className="change-password-form-group">
           <Form.Label>Confirmar nueva contraseña</Form.Label>
@@ -70,11 +75,10 @@ function ChangePassword() {
             placeholder="Confirma tu nueva contraseña"
             value={confirmNewPassword}
             onChange={(e) => setConfirmNewPassword(e.target.value)}
+            minLength={6}
+            required
           />
         </Form.Group>
-        <Form.Text className="text-muted change-password-note">
-          Usa al menos 6 caracteres
-        </Form.Text>
         <Button variant="primary" onClick={handleChangePassword} className="change-password-button">
           Cambiar contraseña
         </Button>

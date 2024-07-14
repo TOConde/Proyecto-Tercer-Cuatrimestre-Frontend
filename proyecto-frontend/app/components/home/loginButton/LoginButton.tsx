@@ -1,17 +1,17 @@
-import './LoginButton.css'
+import './LoginButton.css';
 import { useEffect, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import { getInformacionUsuario, loginUser } from '@/app/services/Login';
 import { useRouter } from 'next/navigation';
-
 
 function LoginButton() {
   const [show, setShow] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginFailed, setLoginFailed] = useState(false);
   const router = useRouter();
 
   const handleChangeEmail = (e: any) => {
@@ -24,22 +24,27 @@ function LoginButton() {
 
   const handleShowClick = () => {
     setShow(!show);
-  }
+    if (!show) {
+      setEmail('');
+      setPassword('');
+      setLoginFailed(false);
+    }
+  };
 
   useEffect(() => {
     if (show && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [show])
+  }, [show]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const user = {
       email,
       password
-    }
+    };
 
-    const loginExitoso = await loginUser(user)
+    const loginExitoso = await loginUser(user);
     if (loginExitoso) {
       const userData = await getInformacionUsuario();
       if (userData?.role === "ADM") {
@@ -47,6 +52,8 @@ function LoginButton() {
       } else {
         router.push("./browse");
       }
+    } else {
+      setLoginFailed(true);
     }
   };
 
@@ -58,20 +65,40 @@ function LoginButton() {
 
       <Modal show={show} onHide={handleShowClick}>
         <Modal.Header className='containerFormLogin'>
-          <Modal.Title>Iniciar sesion en Flixorama</Modal.Title>
+          <Modal.Title>Iniciar sesión en Flixorama</Modal.Title>
         </Modal.Header>
         <Modal.Body className='containerFormLogin'>
-          <form role="form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="usrname"><span className="glyphicon glyphicon-user"></span>Email</label>
-              <input type="text" className="form-control inputLogin" id="usrname" placeholder="Enter email" value={email} ref={inputRef} onChange={handleChangeEmail} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="psw"><span className="glyphicon glyphicon-eye-open"></span>Password</label>
-              <input type="password" className="form-control inputLogin" id="psw" placeholder="Enter password" value={password} onChange={handleChangePassword} />
-            </div>
-            <button type="submit" className="btn btnLoginForm btn-success btn-block"><span className="glyphicon glyphicon-off"></span>Login</button>
-          </form>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                ref={inputRef}
+                onChange={handleChangeEmail}
+                isInvalid={loginFailed}
+              />
+            </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={handleChangePassword}
+                isInvalid={loginFailed}
+              />
+            </Form.Group>
+            {loginFailed && (
+              <div className="invalid-feedback d-block">
+                Email o contraseña incorrectos.
+              </div>
+            )}
+            <Button type="submit" className="btn btnLoginForm btn-success btn-block">
+              Login
+            </Button>
+          </Form>
         </Modal.Body>
       </Modal>
     </>
