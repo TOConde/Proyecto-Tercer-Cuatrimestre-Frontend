@@ -1,9 +1,9 @@
-import './webLogo.css';
+import './WebLogo.css';
 
 export const WebLogo = () => {
     return (
         <a href="/browse">
-            <img src="/img/webLogo/Designer1.png" className="webLogo"></img>
+            <img src="https://i.ibb.co/WtV5LRr/flixorama-Logo-removebg-preview.png" className="webLogo"/>
         </a>
     );
 }

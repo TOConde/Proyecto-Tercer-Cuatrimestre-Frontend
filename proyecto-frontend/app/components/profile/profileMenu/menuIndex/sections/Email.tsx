@@ -57,7 +57,7 @@ function ChangeEmail() {
       }
     } else {
       alert("Contraseña incorrecta");
-    } 
+    }
   };
 
   return (
@@ -69,17 +69,24 @@ function ChangeEmail() {
         </Card.Text>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="change-email-form-group">
-            <Form.Label>Correo actual</Form.Label>
-            <Form.Control type="email" value={currentEmail} readOnly />
+            <Form.Label htmlFor="current-email">Correo actual</Form.Label>
+            <Form.Control
+              type="email"
+              id="current-email"
+              value={currentEmail}
+              readOnly
+            />
           </Form.Group>
           <Form.Group className="change-email-form-group">
-            <Form.Label>Nuevo correo</Form.Label>
-            <Form.Control 
-              type="email" 
-              value={newEmail} 
-              onChange={handleChangeEmail} 
+            <Form.Label htmlFor="new-email">Nuevo correo</Form.Label>
+            <Form.Control
+              type="email"
+              id="new-email"
+              name="new-email"
+              value={newEmail}
+              onChange={handleChangeEmail}
               isInvalid={!emailValid} // Aplicar estilo de validación incorrecta si emailValid es false
-              placeholder="Introduce el nuevo correo" 
+              placeholder="Introduce el nuevo correo"
               required
             />
             <Form.Control.Feedback type="invalid">
@@ -87,12 +94,14 @@ function ChangeEmail() {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="change-email-form-group">
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control 
-              type="password" 
-              value={password} 
-              onChange={handleChangePassword} 
-              placeholder="Introduce tu contraseña para verificar" 
+            <Form.Label htmlFor="password">Contraseña</Form.Label>
+            <Form.Control
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={handleChangePassword}
+              placeholder="Introduce tu contraseña para verificar"
               required
             />
           </Form.Group>
