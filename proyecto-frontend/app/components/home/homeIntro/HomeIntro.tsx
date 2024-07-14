@@ -19,9 +19,11 @@ export const HomeIntro = () => {
       </div>
       <div className='containerHomeIntroText'>
         <div className='containerHomeIntroTextInner'>
-          <p>Películas y series ilimitadas y mucho más</p>
+        <h1 className='flixoramaTitle'>BIENVENIDOS A</h1>
+        <h1 className='flixoramaTitle'>FLIXORAMA</h1>
+          <p>Películas, series ilimitadas y mucho más</p>
           <p>Disfruta donde quieras. Cancela cuando quieras.</p>
-          <p>¿Quieres ver Flixorama ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Flixorama.</p>
+          <p>¿Quieres ver Flixorama ya? créa una cuenta y empeza a disfrutar.</p>
         </div>
       </div>
     </div>

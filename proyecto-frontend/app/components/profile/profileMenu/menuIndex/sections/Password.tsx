@@ -32,10 +32,9 @@ function ChangePassword() {
           alert("Error al cambiar su contraseña");
         }
       } else {
-        alert("Contraseña inválida")
+        alert("Contraseña inválida");
       }
     }
-    
   };
 
   return (
@@ -45,43 +44,51 @@ function ChangePassword() {
         <Card.Text className="change-password-card-text">
           Escoge una contraseña única para mantener segura tu cuenta
         </Card.Text>
-        <Form.Group className="change-password-form-group">
-          <Form.Label>Contraseña actual</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Ingresa tu contraseña actual"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="change-password-form-group">
-          <Form.Label>Nueva contraseña</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Ingresa tu nueva contraseña"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            minLength={6}
-            required
-          />
-          <Form.Text className="text-password">
-            Mínimo 6 caracteres
-          </Form.Text>
-        </Form.Group>
-        <Form.Group className="change-password-form-group">
-          <Form.Label>Confirmar nueva contraseña</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Confirma tu nueva contraseña"
-            value={confirmNewPassword}
-            onChange={(e) => setConfirmNewPassword(e.target.value)}
-            minLength={6}
-            required
-          />
-        </Form.Group>
-        <Button variant="primary" onClick={handleChangePassword} className="change-password-button">
-          Cambiar contraseña
-        </Button>
+        <Form>
+          <Form.Group className="change-password-form-group">
+            <Form.Label htmlFor="current-password">Contraseña actual</Form.Label>
+            <Form.Control
+              type="password"
+              id="current-password"
+              name="current-password"
+              placeholder="Ingresa tu contraseña actual"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="change-password-form-group">
+            <Form.Label htmlFor="new-password">Nueva contraseña</Form.Label>
+            <Form.Control
+              type="password"
+              id="new-password"
+              name="new-password"
+              placeholder="Ingresa tu nueva contraseña"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              minLength={6}
+              required
+            />
+            <Form.Text className="text-password">
+              Mínimo 6 caracteres
+            </Form.Text>
+          </Form.Group>
+          <Form.Group className="change-password-form-group">
+            <Form.Label htmlFor="confirm-new-password">Confirmar nueva contraseña</Form.Label>
+            <Form.Control
+              type="password"
+              id="confirm-new-password"
+              name="confirm-new-password"
+              placeholder="Confirma tu nueva contraseña"
+              value={confirmNewPassword}
+              onChange={(e) => setConfirmNewPassword(e.target.value)}
+              minLength={6}
+              required
+            />
+          </Form.Group>
+          <Button variant="primary" onClick={handleChangePassword} className="change-password-button">
+            Cambiar contraseña
+          </Button>
+        </Form>
       </Card.Body>
     </Card>
   );

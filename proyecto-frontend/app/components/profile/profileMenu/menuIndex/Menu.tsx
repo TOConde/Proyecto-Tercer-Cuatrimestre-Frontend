@@ -23,7 +23,8 @@ const Menu: React.FC = () => {
     return (
         <div className="cuentaMenu">
         <div className="cuentaMenuSections">
-            <h3>General</h3>
+            <div className="cuentaMenuSectionsInner">
+            <h3 className="menuIndex">General</h3>
             {generalSections.map(section => (
                 <button
                     key={section.id}
@@ -33,7 +34,7 @@ const Menu: React.FC = () => {
                     {section.title}
                 </button>
             ))}
-            <h3>Cuenta</h3>
+            <h3 className="menuIndex">Cuenta</h3>
             {cuentaSections.map(section => (
                 <button
                     key={section.id}
@@ -43,6 +44,7 @@ const Menu: React.FC = () => {
                     {section.title}
                 </button>
             ))}
+            </div>
         </div>
         <div className="cuentaSection">
             <Section activeSection={activeSection} />
