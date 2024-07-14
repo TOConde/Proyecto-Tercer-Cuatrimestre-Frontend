@@ -35,9 +35,14 @@
     flex-grow: 1;
 }
 
-.containerHomeIntroText p {
-    margin: 0;
+.containerHomeIntroTextInner {
+    border-radius: 20px;
     background-color: black;
+    border: 2px solid #d9d946;
+}
+
+.containerHomeIntroText p {
+    margin: 0;    
     padding: 15px 15px 0 15px;
 }
 
