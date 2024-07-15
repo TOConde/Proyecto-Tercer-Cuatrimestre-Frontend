@@ -93,7 +93,12 @@ const EditPeliculaModal: React.FC<EditPeliculaModalProps> = ({ show, handleClose
               </Form.Group>
               <Form.Group controlId="formFechaEstreno">
                 <Form.Label>Fecha de Estreno</Form.Label>
-                <Form.Control type="date" name='fechaEstreno' value={new Date(updatedPelicula.fechaEstreno).toISOString().substring(0, 10)} onChange={handleInputChange} />
+                <Form.Control
+                  type="date"
+                  name='fechaEstreno'
+                  value={updatedPelicula.fechaEstreno ? new Date(updatedPelicula.fechaEstreno).toISOString().substring(0, 10) : ''}
+                  onChange={handleInputChange}
+                />
               </Form.Group>
               <Form.Group controlId="formDuracion">
                 <Form.Label>Duración</Form.Label>
