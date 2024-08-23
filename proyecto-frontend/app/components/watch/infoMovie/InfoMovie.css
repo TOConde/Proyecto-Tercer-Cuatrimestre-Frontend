@@ -1,0 +1,23 @@
+.infoMoviContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 60px 60px;
+  border-bottom: solid 5px #343a40;
+  background-color: black;
+}
+
+.infoTituloSinopContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  max-width: 50%;
+}
+
+.infoImagenConteiner {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  max-width: 50%;
+}

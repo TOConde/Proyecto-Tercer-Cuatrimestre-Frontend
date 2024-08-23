@@ -1,0 +1,15 @@
+.containerSubscription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: 50vh;
+    background-color: black;
+    border-bottom: solid 5px #343a40;
+}
+
+.cardContainer {
+    border: solid 1px #d9d946;
+    background-color: black;
+    color: #d9d946;
+}

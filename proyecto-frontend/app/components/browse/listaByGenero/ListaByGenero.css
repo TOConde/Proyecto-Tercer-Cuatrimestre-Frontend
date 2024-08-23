@@ -1,0 +1,41 @@
+.containerListaRecomen {
+  width: 100%;
+  padding: 25px;
+  color: #d9d946;
+  background-color: black;
+  border-bottom: solid;
+  border-color: #343a40;
+  border-width: 5px;
+}
+
+.tituloLista {
+  text-align: center;
+  font-size: 36px;
+  cursor: default;
+}
+
+.imgMovie {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.imgMovie:hover {
+  transform: scale(1.05);
+}
+
+.tituloPeliculaLista {
+  font-size: 20px;
+  padding-top: 8px;
+  color: #d9d946;
+  transition: transform 0.2s ease-in-out;
+}
+
+.tituloPeliculaLista:hover {
+  transform: scale(1.05);  
+}
+
+.col a {
+  text-decoration: none;
+}

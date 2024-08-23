@@ -1,0 +1,78 @@
+.subscriptions-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: black;
+  color: #d9d946;
+  border: solid 1px #d9d946;
+}
+
+.subscriptions-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscriptions-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subscription-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.subscription-option-card {
+  width: 100%;
+  cursor: pointer;
+  background-color: black;
+  color: #d9d946;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.subscription-option-card.selected {
+  border-color: #d9d946;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.subscription-list-group {
+  list-style: none;
+  padding: 0;
+}
+
+.subscription-list-item {
+  color: #d9d946;
+  background-color: black;
+}
+
+.subscription-card-subtitle {
+  color: #d9d946;
+}
+
+.subscription-current {
+  margin-top: 1rem;
+  color: #d9d946;
+}
+
+.subscription-button {
+  margin-top: 1rem;
+  background-color: black;
+  border: 1px solid #d9d946;
+  color: #d9d946;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.subscription-button:hover {
+  background-color: #d9d946;
+  color: black;
+}

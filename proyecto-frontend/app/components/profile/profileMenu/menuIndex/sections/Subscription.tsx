@@ -1,0 +1,96 @@
+import React, { useEffect, useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { editUserSubscription, getUserById } from '@/app/services/User';
+import './Subscription.css';
+
+function Subscriptions() {
+  const [subscription, setSubscription] = useState<number | null>(null);
+  const [tipoDeSuscripcion, setTipoDeSuscripcion] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await getUserById();
+        if (response.data) {
+          setSubscription(response.data.tipoDeSuscripcion);
+          setTipoDeSuscripcion(response.data.tipoDeSuscripcion);
+        }
+      } catch (error) {
+        console.error('Error para recuperar la informacion del usuario.', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const handleCardClick = (cardId: number) => {
+    setTipoDeSuscripcion(cardId);
+  };
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    const body = {
+      tipoDeSuscripcion,
+    };
+
+    try {
+      await editUserSubscription(body);
+      console.log('Perfil Editado.');
+    } catch (error) {
+      console.log('No se pudo editar el perfil.', error);
+    }
+  };
+
+  return (
+    <Card className="subscriptions-card">
+      <Card.Body className="subscriptions-card-body">
+        <Card.Title className="subscriptions-card-title">Suscripciones</Card.Title>
+        <div className="subscription-options">
+          <Card
+            className={`subscription-option-card ${tipoDeSuscripcion === 0 ? 'selected' : ''}`}
+            onClick={() => handleCardClick(0)}
+          >
+            <Card.Body>
+              <Card.Title>Free User</Card.Title>
+              <Card.Subtitle className="subscription-card-subtitle">0.0$ Mensuales</Card.Subtitle>
+              <ListGroup variant="flush" className="subscription-list-group">
+                <ListGroup.Item className="subscription-list-item">Solo un dispositivo a la vez.</ListGroup.Item>
+                <ListGroup.Item className="subscription-list-item">Resolucion Full HD.</ListGroup.Item>
+                <ListGroup.Item className="subscription-list-item">Acceso limitado en películas y series.</ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+          </Card>
+
+          <Card
+            className={`subscription-option-card ${tipoDeSuscripcion === 1 ? 'selected' : ''}`}
+            onClick={() => handleCardClick(1)}
+          >
+            <Card.Body>
+              <Card.Title>Premium User</Card.Title>
+              <Card.Subtitle className="subscription-card-subtitle">4999.0$ Mensuales</Card.Subtitle>
+              <ListGroup variant="flush" className="subscription-list-group">
+                <ListGroup.Item className="subscription-list-item">Hasta 4 dispositivos a la vez.</ListGroup.Item>
+                <ListGroup.Item className="subscription-list-item">Soporte de resolución 4k.</ListGroup.Item>
+                <ListGroup.Item className="subscription-list-item">Acceso ilimitado.</ListGroup.Item>
+                <ListGroup.Item className="subscription-list-item">50 descargas para disfrutar offline.</ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+          </Card>
+        </div>
+        {subscription !== null && (
+          <div className="subscription-current">
+            <h4>Suscripción actual:</h4>
+            <p>{subscription === 0 ? 'Free User' : 'Premium User'}</p>
+          </div>
+        )}
+        <Button variant="primary" onClick={handleSubmit} className="subscription-button">
+          Gestionar método de pago
+        </Button>
+      </Card.Body>
+    </Card>
+  );
+}
+
+export default Subscriptions;

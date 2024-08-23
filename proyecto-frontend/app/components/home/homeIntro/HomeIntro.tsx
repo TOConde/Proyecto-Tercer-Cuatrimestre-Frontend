@@ -1,0 +1,31 @@
+import './HomeIntro.css'
+import LoginButton from '../loginButton/LoginButton';
+import RegisterButton from '../registerButton/RegisterButton';
+import { WebLogo } from '../../global/webLogo/WebLogo';
+
+export const HomeIntro = () => {
+  return (
+    <div className="container text-center containerIntro">
+      <div className="containerTop">
+        <WebLogo />
+        <div className='containerBttn'>
+          <div className='containerBttnLogin'>
+            <LoginButton />
+          </div>
+          <div>
+            <RegisterButton />
+          </div>
+        </div>
+      </div>
+      <div className='containerHomeIntroText'>
+        <div className='containerHomeIntroTextInner'>
+        <h1 className='flixoramaTitle'>BIENVENIDOS A</h1>
+        <h1 className='flixoramaTitle'>FLIXORAMA</h1>
+          <p>Películas, series ilimitadas y mucho más</p>
+          <p>Disfruta donde quieras. Cancela cuando quieras.</p>
+          <p>¿Quieres ver Flixorama ya? créa una cuenta y empeza a disfrutar.</p>
+        </div>
+      </div>
+    </div>
+  );
+}

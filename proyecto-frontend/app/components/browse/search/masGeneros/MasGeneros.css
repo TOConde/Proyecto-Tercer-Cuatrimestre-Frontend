@@ -1,0 +1,25 @@
+.containerGenerosSearchButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.generosSearchButtons {
+  padding: 5px 10px;
+  color: #d9d946;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.generosSearchButtons:hover {
+  padding: 0 10px;
+  color: white;
+  background-color: rgb(32, 32, 32);
+  text-decoration: none;
+}

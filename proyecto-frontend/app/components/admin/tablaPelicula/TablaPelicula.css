@@ -1,0 +1,26 @@
+.containerMovieTable {
+  margin: 0 60px;
+}
+
+.editIconTabla {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.deleteIconTabla {
+  cursor: pointer;
+}
+
+.searchTableTitle {
+  width: 400px;
+  padding-top: 40px;
+  margin-bottom: 5px;
+  margin-left: 60px;
+}
+
+.paginationTab {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  margin: 0;
+}

@@ -1,0 +1,48 @@
+.cuentaMenu {
+  display: flex;
+  height: 75vh;
+}
+
+.cuentaMenuSections {
+  width: 200px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  margin-left: 16%;
+  margin-top: 2%;
+}
+
+.cuentaMenuSections button {
+  color: white;
+  padding: 15px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.cuentaMenuSections button:hover {
+  background-color: #343a40;
+}
+
+.cuentaMenuSections .active {
+  background-color: #343a40;
+  font-weight: bold;
+}
+
+.cuentaSection {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.menuIndex {
+  color: #d9d946;
+}
+
+.cuentaMenuSectionsInner {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #d9d946;
+}

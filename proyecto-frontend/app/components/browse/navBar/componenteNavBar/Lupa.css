@@ -1,0 +1,13 @@
+.containerLupa{
+  display: flex;
+}
+
+.lupaImg {
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.searchInput {
+  border: 0px;
+}

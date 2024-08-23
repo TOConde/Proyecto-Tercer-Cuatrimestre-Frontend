@@ -1,0 +1,53 @@
+.profileImg {
+    width: 200px;
+    height: 200px;
+    border: solid;
+    border-radius: 50%;
+    border-color: #343a40;
+    border-width: 5px;
+    position: relative;
+    margin-top: -100px;
+    margin-left: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.userImg {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.imgContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+.editIcon {
+    color: white;
+    font-size: 24px;
+}
